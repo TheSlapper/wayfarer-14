@@ -58,19 +58,18 @@
 - type: roleLoadout
   id: JobMedicalER
   groups:
-  - WFHead
-  - WFNeck
   - EmergencyResponderJumpsuit
-  - WFGloves
-  - WFBackpack
   - WFOuterClothing
-  - ContractorForcedOuterClothing
+  - WFBackpack
   - WFShoes
-  - WFFace
-  - WFGlasses
-  - WFBelt
+  - WFHead
   - WFEars
+  - WFGloves
   - EmergencyResponderPDA
+  - WFGlasses
+  - WFFace
+  - WFBelt
+  - WFNeck
   - WFEncryptionKey
   - WFBoxSurvival
   - WFWallet

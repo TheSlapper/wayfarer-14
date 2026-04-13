@@ -1871,3 +1871,12 @@ Entries:
   id: 6709
   time: '2026-04-11T23:25:53.0000000+00:00'
   url: https://github.com/project-wayfarer/wayfarer-14/pull/565
+- author: VVersengt
+  changes:
+    - type: Add
+      message: Mass Scanners to survival boxes.
+    - type: Fix
+      message: Various minor tweaks and fixes.
+  id: 6710
+  time: '2026-04-13T14:48:19.0000000+00:00'
+  url: https://github.com/project-wayfarer/wayfarer-14/pull/575
