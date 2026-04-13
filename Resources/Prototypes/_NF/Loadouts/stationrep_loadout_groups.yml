@@ -49,6 +49,8 @@
   loadouts:
   - StationRepClothingHeadsetAltCentComCommon
   subgroups:
+  # - MercenaryEars
+  # - PilotEars
   - WFEars # Wayfarer edit. Removed Pilot/Merc ears, already in WFEars.
   fallbacks:
   - StationRepClothingHeadsetAltCentComCommon
