@@ -952,7 +952,6 @@
   - WFMatchbox
   - WFLighter
   - WFFlippoLighter
-  - WFHonkCoFlippo
   - WFFlippoEngravedLighter
   - WFDrinkFlaskOld
   - WFDrinkMREFlask
@@ -1001,6 +1000,12 @@
   - WFRubberStampTrader
   - WFRubberStampClown
   - WFRubberStampMime
+# Clown
+  - WFHonkCoFlippo
+  - WFBikeHorn
+  - WFClownRecorder
+  - WFWhoopieCushion
+  - WFToyHammer
 
 # == IN-HAND ITEMS
 - type: loadoutGroup

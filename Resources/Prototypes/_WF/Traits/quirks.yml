@@ -7,3 +7,6 @@
   category: Quirks
   components:
     - type: ClownTraining
+    - type: AutoEmote
+      emotes:
+      - ClownGiggle
