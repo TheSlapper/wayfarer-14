@@ -16,18 +16,7 @@
   - MagBox20Rifle
   - MagBox30
   - MagBox30Rifle
-  - WFAmmoCrossbow
-  - WFAmmoPistol35
-  - WFAmmoPistol45
-  - WFAmmoRifle20
-  - WFAmmoRifle30
-  - WFAmmoMag35
-  - WFAmmoMag20
-  - WFAmmoClip20
-  - WFAmmoMag30
-  - WFAmmoMag45
-  - WFAmmoSubmachineMag35
-  - WFBoxCartridgeCap
+- WFAmmoCrossbow
 
 - type: loadout
   id: BoxShotgunAmmo
