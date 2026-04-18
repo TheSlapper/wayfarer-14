@@ -16,7 +16,8 @@
   - MagBox20Rifle
   - MagBox30
   - MagBox30Rifle
-- WFAmmoCrossbow
+  - WFAmmoCrossbow
+  - WFBoxCartridgeCap
 
 - type: loadout
   id: BoxShotgunAmmo
@@ -107,7 +108,7 @@
   price: 4000
   storage:
     back:
-    - NFMagazineSubMachineGun35
+    - ClothingBeltQuiverCrossbowFilledBolt
 
 # Clown
 - type: loadout
@@ -119,4 +120,3 @@
   storage:
     back:
     - NFBoxCartridgeCap
-    - ClothingBeltQuiverCrossbowFilledBolt
