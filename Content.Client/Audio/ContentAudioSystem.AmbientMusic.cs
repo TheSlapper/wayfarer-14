@@ -102,10 +102,8 @@ public sealed partial class ContentAudioSystem
     private bool _replayAmbientMusicBool;
 
     // Wayfarer
-    private const float ExternalMusicCheckInterval = 0.5f;
     private const float JukeboxAudibleRange = 10f; // matches JukeboxSystem WithMaxDistance
     private const float InstrumentAudibleRange = 15f;
-    private float _externalMusicCheckTimer;
     private bool _externallyMutedAmbient;
     // End Wayfarer
 
@@ -132,14 +130,7 @@ public sealed partial class ContentAudioSystem
         if (!_timing.IsFirstTimePredicted) //otherwise this will tick like 5x faster on client. thanks prediction
             return;
 
-        // Wayfarer
-        _externalMusicCheckTimer += frameTime;
-        if (_externalMusicCheckTimer >= ExternalMusicCheckInterval)
-        {
-            _externalMusicCheckTimer = 0f;
-            UpdateExternalMusicMute();
-        }
-        // End Wayfarer
+        UpdateExternalMusicMute(); // Wayfarer
 
         if (_initialStationMusicBool)
         {
@@ -590,27 +581,18 @@ public sealed partial class ContentAudioSystem
     // Wayfarer
     private void UpdateExternalMusicMute()
     {
-        if (_state.CurrentState is not GameplayState)
-            return;
-
         var localEnt = _player.LocalEntity;
         if (localEnt == null)
             return;
 
         var localXform = Transform(localEnt.Value);
-        if (localXform.MapID == MapId.Nullspace)
-            return;
-
         var localPos = _xform.GetWorldPosition(localXform);
         var audible = IsAnyExternalMusicAudible(localXform.MapID, localPos);
 
         if (audible)
         {
-            if (_ambientMusicStream != null)
-            {
-                _replayAmbientMusicBool = false;
-                DisableAmbientMusic();
-            }
+            _replayAmbientMusicBool = false;
+            DisableAmbientMusic();
             _externallyMutedAmbient = true;
         }
         else if (_externallyMutedAmbient)
