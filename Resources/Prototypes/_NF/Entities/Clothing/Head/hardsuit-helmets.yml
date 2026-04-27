@@ -289,7 +289,9 @@
   - type: Clothing
     sprite: _NF/Clothing/Head/Hardsuits/pirate_elite.rsi
   - type: PointLight
-    color: "#ffed7f"
+    color: "#ff0000" # Wayfarer: #ffed7f<#ff0000
+    radius: 7 # Wayfarer: 3<7
+    energy: 4 # Wayfarer: 2<4
   - type: PressureProtection
     highPressureMultiplier: 0.45
     lowPressureMultiplier: 1000
