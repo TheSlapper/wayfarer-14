@@ -1,4 +1,4 @@
-﻿using Content.Server.CriminalRecords.Systems;
+using Content.Server.CriminalRecords.Systems;
 using Content.Server.Radio.EntitySystems;
 using Content.Server.StationRecords.Systems;
 using Content.Shared.Clothing;
@@ -32,7 +32,9 @@ public sealed class WantedOutlawSystem : EntitySystem
 
     private void OnPlayerSpawn(EntityUid uid, WantedOutlawComponent component, PlayerSpawnCompleteEvent args)
     {
-        var jobId = args.JobId!;
+        if (args.JobId is not { } jobId)
+            return;
+
         _inventory.TryGetSlotEntity(uid, "id", out var idUid);
         TryComp<FingerprintComponent>(uid, out var fingerprint);
         TryComp<DnaComponent>(uid, out var dna);

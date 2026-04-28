@@ -134,6 +134,10 @@ public sealed class StationRecordsSystem : SharedStationRecordsSystem
     }
 
     // Wayfarer
+    // Creates the sector record for a spawning player and returns its key, or returns the
+    // existing key if the record already exists (CreateGeneralRecord dedupes by name).
+    // Directed PlayerSpawnCompleteEvent handlers run before the broadcast handler in OnPlayerSpawn, 
+    // so callers like WantedOutlawSystem would miss the record on a player's first spawn of the round.
     public StationRecordKey? TryCreateSectorRecord(
         EntityUid player,
         EntityUid? idUid,
