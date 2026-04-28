@@ -27,6 +27,7 @@
     - type: AutoPirateCaptain
     - type: SpecialSectorStationRecord # must be given on spawn
       recordGeneration: FalseRecord
+    - type: WantedOutlaw # Wayfarer: triggers sector record + Wanted status + CGP radio ping at spawn
     - type: DisableSuitSensors
   - !type:AddImplantSpecial
     implants: [ FreelanceTrackingImplant ]

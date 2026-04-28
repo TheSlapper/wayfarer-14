@@ -607,6 +607,7 @@
   - WFLongarm # Wayfarer
   - WFAmmo # Wayfarer
   canCustomizeName: true # pseudonym?
+  canCustomizeCrimeReason: true # Wayfarer
 
 # region Prisoner
 
