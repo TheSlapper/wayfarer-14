@@ -1,7 +1,4 @@
-# Wayfarer: PointDiskConsole (Monolith #1408) prints these existing entities directly.
-# Monolith's PR added new ResearchDisk1000/5000/10000 entities. We're reusing Wayfarer's
-# pre-existing ResearchDisk / ResearchDisk5000 / ResearchDisk10000 since they already
-# carry ResearchDiskComponent for point-deposit on insert.
+# Wayfarer: PointDiskConsole (Monolith #1408) prints ResearchDisk / ResearchDisk5000 / ResearchDisk10000.
 
 - type: entity
   parent: BaseItem
