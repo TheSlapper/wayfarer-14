@@ -4,7 +4,7 @@
 
 using Content.Server.DeviceLinking.Systems;
 using Content.Server.Shuttles.Components;
-using Content.Shared._NF.Shuttles.Events;
+using Content.Shared._Mono.Shuttles.Events;
 using Content.Shared.Shuttles.Components;
 
 namespace Content.Server.Shuttles.Systems;

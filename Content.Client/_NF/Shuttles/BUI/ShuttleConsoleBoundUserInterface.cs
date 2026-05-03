@@ -4,6 +4,7 @@
 using System.Numerics;
 using Content.Client.Shuttles.UI;
 using Content.Shared._NF.Shuttles.Events;
+using Content.Shared._Mono.Shuttles.Events; // Mono
 using Content.Shared.Shuttles.Components;
 
 namespace Content.Client.Shuttles.BUI
