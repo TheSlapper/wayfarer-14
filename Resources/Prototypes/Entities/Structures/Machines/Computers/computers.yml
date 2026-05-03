@@ -156,6 +156,7 @@
   - type: GuideHelp
     guides:
     - ShuttleCraft
+  - type: NoSignalOnLink # Mono
 
 - type: entity
   parent: [BaseComputerShuttle, BaseShuttleIntercom] # Frontier - BaseShuttleIntercom
