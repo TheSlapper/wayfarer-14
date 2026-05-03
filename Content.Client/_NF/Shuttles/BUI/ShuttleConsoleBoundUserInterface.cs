@@ -18,6 +18,7 @@ namespace Content.Client.Shuttles.BUI
             _window.OnSetTargetCoordinates += OnSetTargetCoordinates;
             _window.OnSetHideTarget += OnSetHideTarget;
             _window.RequestTrackEntity += OnTrackEntity;
+            _window.OnNetworkPortButtonPressed += OnNetworkPortButtonPressed; // Mono
         }
         private void OnInertiaDampeningModeChanged(NetEntity? entityUid, InertiaDampeningMode mode)
         {
@@ -64,5 +65,16 @@ namespace Content.Client.Shuttles.BUI
                 TrackedEntity = trackEntity
             });
         }
+
+        // Mono
+        private void OnNetworkPortButtonPressed(string sourcePort, string targetPort)
+        {
+            SendMessage(new ShuttlePortButtonPressedMessage
+            {
+                SourcePort = sourcePort,
+                TargetPort = targetPort
+            });
+        }
+        // End Mono
     }
 }
