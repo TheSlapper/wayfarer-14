@@ -259,7 +259,6 @@
                                  Text="{controls:Loc 'shuttle-console-device-button-8'}"
                                  TextAlign="Center"
                                  HorizontalExpand="True"
-                                 ToolTip="{controls:Loc 'shuttle-console-network-connect-tooltip'}"
                                  StyleClasses="OpenLeft"
                                  Margin="0"/>
             </controls:BoxContainer>
