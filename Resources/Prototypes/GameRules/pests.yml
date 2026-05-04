@@ -23,8 +23,8 @@
   components:
   - type: StationEvent
     startAnnouncement: station-event-vent-creatures-nf-start-announcement # Frontier: add nf-
-    startAudio:
-      path: /Audio/_NF/Announcements/PocketSizedAndy/andy2_vent_critters.ogg # Frontier
+#    startAudio:
+#      path: /Audio/_NF/Announcements/PocketSizedAndy/andy2_vent_critters.ogg # Wayfarer
     earliestStart: 15
     weight: 6
     duration: 50

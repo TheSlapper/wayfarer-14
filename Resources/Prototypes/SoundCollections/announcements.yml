@@ -7,8 +7,9 @@
   - /Audio/Announcements/RoundEnd/roundend_legg.ogg # Wayfarer
   # - /Audio/_NF/Announcements/RoundEnd/snake_frontierfm.ogg # Frontier
 
-- type: soundCollection
-  id: PowerOn
-  files:
-  - /Audio/_NF/Announcements/PocketSizedAndy/andy1_power_onnf.ogg # Frontier
-  
+# Wayfarer: PocketSizedAndy disabled, only entry was its andy1_power_onnf.ogg clip
+#- type: soundCollection
+#  id: PowerOn
+#  files:
+#  - /Audio/_NF/Announcements/PocketSizedAndy/andy1_power_onnf.ogg # Frontier
+

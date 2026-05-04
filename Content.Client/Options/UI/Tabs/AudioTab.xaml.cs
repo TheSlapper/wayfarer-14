@@ -62,10 +62,11 @@ public sealed partial class AudioTab : Control
             SliderVolumeInterface,
             scale: ContentAudioSystem.InterfaceMultiplier);
 
-        Control.AddOptionPercentSlider(
-            CCVars.AndyAnnouncementVolume,
-            SliderVolumeAndyAnnouncements,
-            scale: ContentAudioSystem.AndyAnnouncementMultiplier);
+        // Wayfarer: Andy voice clips disabled.
+        //Control.AddOptionPercentSlider(
+        //    CCVars.AndyAnnouncementVolume,
+        //    SliderVolumeAndyAnnouncements,
+        //    scale: ContentAudioSystem.AndyAnnouncementMultiplier);
 
         Control.AddOptionSlider(
             CCVars.MaxAmbientSources,

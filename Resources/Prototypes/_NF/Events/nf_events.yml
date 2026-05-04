@@ -14,8 +14,8 @@
   components:
   - type: StationEvent
     startAnnouncement: bluespace-cargo-event-announcement
-    startAudio:
-      path: /Audio/_NF/Announcements/PocketSizedAndy/andy2_bluespace_normal_crate.ogg
+#    startAudio:
+#      path: /Audio/_NF/Announcements/PocketSizedAndy/andy2_bluespace_normal_crate.ogg # Wayfarer
     weight: 5
     duration: 35
     minimumPlayers: 2 # WF Added minimumPlayers
@@ -34,8 +34,8 @@
   - type: StationEvent
   #Todo add path to  start warning and end Voiceover
     startAnnouncement: bluespace-cargo-event-announcement
-    startAudio:
-      path: /Audio/_NF/Announcements/PocketSizedAndy/andy2_bluespace_normal_crate.ogg
+#    startAudio:
+#      path: /Audio/_NF/Announcements/PocketSizedAndy/andy2_bluespace_normal_crate.ogg # Wayfarer
     earliestStart: 20
     weight: 5
     duration: 35
@@ -53,8 +53,8 @@
   components:
   - type: StationEvent
     startAnnouncement: bluespace-syndicate-crate-event-announcement
-    startAudio:
-      path: /Audio/_NF/Announcements/PocketSizedAndy/andy2_bluespace_syndie_crate.ogg
+#    startAudio:
+#      path: /Audio/_NF/Announcements/PocketSizedAndy/andy2_bluespace_syndie_crate.ogg # Wayfarer
     weight: 1
     duration: 35
     earliestStart: 90

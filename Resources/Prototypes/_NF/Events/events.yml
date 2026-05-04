@@ -19,8 +19,8 @@
   parent: BaseGameRule
   components:
   - type: StationEvent
-    startAudio:
-      path: /Audio/_NF/Announcements/PocketSizedAndy/andy2_breaker_flip.ogg
+#    startAudio:
+#      path: /Audio/_NF/Announcements/PocketSizedAndy/andy2_breaker_flip.ogg # Wayfarer
     weight: 7
     earliestStart: 15 # Frontier
     duration: 1
@@ -54,15 +54,15 @@
   id: NFSolarFlare
   components:
   - type: StationEvent
-    startAudio:
-      path: /Audio/_NF/Announcements/PocketSizedAndy/andy2_solar_flare_start.ogg
+#    startAudio:
+#      path: /Audio/_NF/Announcements/PocketSizedAndy/andy2_solar_flare_start.ogg # Wayfarer
     weight: 0.4
     earliestStart: 30
     reoccurrenceDelay: 60
     startAnnouncement: station-event-solar-flare-nf-start-announcement
     endAnnouncement: station-event-solar-flare-nf-end-announcement
-    endAudio:
-      path: /Audio/_NF/Announcements/PocketSizedAndy/andy2_solar_flare_end.ogg
+#    endAudio:
+#      path: /Audio/_NF/Announcements/PocketSizedAndy/andy2_solar_flare_end.ogg # Wayfarer
     duration: 120
     maxDuration: 240
   - type: SolarFlareRule
@@ -76,8 +76,8 @@
   components:
   - type: StationEvent
     startAnnouncement: station-event-vent-clog-nf-start-announcement # Frontier: add nf-
-    startAudio:
-      path: /Audio/_NF/Announcements/PocketSizedAndy/andy2_vent_clog.ogg
+#    startAudio:
+#      path: /Audio/_NF/Announcements/PocketSizedAndy/andy2_vent_clog.ogg # Wayfarer
     earliestStart: 15
     minimumPlayers: 15
     weight: 5
