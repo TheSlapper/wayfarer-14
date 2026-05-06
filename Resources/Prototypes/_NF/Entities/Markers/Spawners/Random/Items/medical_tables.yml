@@ -1193,7 +1193,7 @@
       children:
       # Computers
       - id: BodyScannerComputerCircuitboard
-      - id: ComputerIFFCircuitboard
+      # - id: ComputerIFFCircuitboard # Wayfarer
       - id: CloningConsoleComputerCircuitboard
       # Machines
       - id: CloningPodMachineCircuitboard
