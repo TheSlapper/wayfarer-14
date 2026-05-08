@@ -179,8 +179,8 @@
 - type: entity
   parent: ClothingUniformBase
   id: SLClothingUniformJumpsuitVampir
-  name: bloodstained aristocrat suit
-  description: An aristocratic suit reeking of blood and lost dreams.
+  name: aristocrat suit
+  description: An aristocratic suit.
   components:
   - type: Sprite
     sprite: _Starlight/Clothing/Uniforms/Jumpsuit/ari.rsi

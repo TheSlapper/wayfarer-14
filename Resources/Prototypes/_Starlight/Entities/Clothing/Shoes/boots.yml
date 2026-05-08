@@ -3,8 +3,8 @@
 - type: entity
   parent: ClothingShoesBaseButcherable
   id: SLClothingUniformBootsVampir
-  name: bloodstained aristocrat boots
-  description: Old boots with a gray sole, faint bloodstains are visible.
+  name: aristocrat boots
+  description: Old boots with a gray sole.
   components:
   - type: Sprite
     sprite: _Starlight/Clothing/Shoes/Boots/ari.rsi
