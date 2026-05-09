@@ -1060,3 +1060,163 @@
   price: 1000
   equipment:
     head: SLRedRegaliaHat
+
+# DeltaV clothing
+- type: loadout
+  id: WFDVClothingHeadHatFedoraBlack
+  hideEffects:
+  - !type:GroupLoadoutEffect
+    proto: NFHeadwearCapable
+  price: 650
+  equipment:
+    head: DVClothingHeadHatFedoraBlack
+  groupBy: "fedoras"
+
+- type: loadout
+  id: WFDVClothingHeadHatFedoraChoc
+  hideEffects:
+  - !type:GroupLoadoutEffect
+    proto: NFHeadwearCapable
+  price: 650
+  equipment:
+    head: DVClothingHeadHatFedoraChoc
+  groupBy: "fedoras"
+
+- type: loadout
+  id: WFDVClothingHeadHatFedoraWhite
+  hideEffects:
+  - !type:GroupLoadoutEffect
+    proto: NFHeadwearCapable
+  price: 650
+  equipment:
+    head: DVClothingHeadHatFedoraWhite
+  groupBy: "fedoras"
+
+- type: loadout
+  id: WFDVClothingHeadPropellerHat
+  hideEffects:
+  - !type:GroupLoadoutEffect
+    proto: NFHeadwearCapable
+  price: 500
+  equipment:
+    head: DVClothingHeadPropellerHat
+
+- type: loadout
+  id: WFDVClothingHeadHatReindeer
+  hideEffects:
+  - !type:GroupLoadoutEffect
+    proto: NFHeadwearCapable
+  price: 500
+  equipment:
+    head: DVClothingHeadHatReindeer
+  groupBy: "festive"
+
+- type: loadout
+  id: WFDVClothingHeadHatRedRibbon
+  hideEffects:
+  - !type:GroupLoadoutEffect
+    proto: NFHeadwearCapable
+  price: 500
+  equipment:
+    head: DVClothingHeadHatRedRibbon
+  groupBy: "festive"
+
+- type: loadout
+  id: WFDVClothingHeadHatFestiveHatRed
+  hideEffects:
+  - !type:GroupLoadoutEffect
+    proto: NFHeadwearCapable
+  price: 500
+  equipment:
+    head: DVClothingHeadHatFestiveHatRed
+  groupBy: "festive"
+
+- type: loadout
+  id: WFDVClothingHeadHatFestiveHatGreen
+  hideEffects:
+  - !type:GroupLoadoutEffect
+    proto: NFHeadwearCapable
+  price: 500
+  equipment:
+    head: DVClothingHeadHatFestiveHatGreen
+  groupBy: "festive"
+
+- type: loadout
+  id: WFDVClothingHeadHatCandyCane
+  hideEffects:
+  - !type:GroupLoadoutEffect
+    proto: NFHeadwearCapable
+  price: 500
+  equipment:
+    head: DVClothingHeadHatCandyCane
+  groupBy: "festive"
+
+- type: loadout
+  id: WFDVClothingHeadHatStar
+  hideEffects:
+  - !type:GroupLoadoutEffect
+    proto: NFHeadwearCapable
+  price: 500
+  equipment:
+    head: DVClothingHeadHatStar
+  groupBy: "festive"
+
+- type: loadout
+  id: WFDVClothingHeadHatFestiveLights
+  hideEffects:
+  - !type:GroupLoadoutEffect
+    proto: NFHeadwearCapable
+  price: 500
+  equipment:
+    head: DVClothingHeadHatFestiveLights
+  groupBy: "festive"
+
+- type: loadout
+  id: WFDVClothingHeadHatElf
+  hideEffects:
+  - !type:GroupLoadoutEffect
+    proto: NFHeadwearCapable
+  price: 500
+  equipment:
+    head: DVClothingHeadHatElf
+  groupBy: "festive"
+
+- type: loadout
+  id: WFDVClothingHeadHatWrestlingMaskLuchaRed
+  hideEffects:
+  - !type:GroupLoadoutEffect
+    proto: NFHeadwearCapable
+  price: 650
+  equipment:
+    head: DVClothingHeadHatWrestlingMaskLuchaRed
+  groupBy: "wrestler"
+
+- type: loadout
+  id: WFDVClothingHeadHatWrestlingMaskLuchaBlue
+  hideEffects:
+  - !type:GroupLoadoutEffect
+    proto: NFHeadwearCapable
+  price: 650
+  equipment:
+    head: DVClothingHeadHatWrestlingMaskLuchaBlue
+  groupBy: "wrestler"
+
+- type: loadout
+  id: WFDVClothingHeadHatFlatBlack
+  hideEffects:
+  - !type:GroupLoadoutEffect
+    proto: NFHeadwearCapable
+  price: 650
+  equipment:
+    head: DVClothingHeadHatFlatBlack
+  groupBy: "flatcaps"
+
+- type: loadout
+  id: WFDVClothingHeadHatFlatBrown
+  hideEffects:
+  - !type:GroupLoadoutEffect
+    proto: NFHeadwearCapable
+  price: 650
+  equipment:
+    head: DVClothingHeadHatFlatBrown
+  groupBy: "flatcaps"
