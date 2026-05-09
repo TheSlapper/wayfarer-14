@@ -180,7 +180,7 @@
   parent: ClothingUniformBase
   id: SLClothingUniformJumpsuitVampir
   name: aristocrat suit
-  description: An aristocratic suit.
+  description: An aristocratic suit. # wayfarer
   components:
   - type: Sprite
     sprite: _Starlight/Clothing/Uniforms/Jumpsuit/ari.rsi

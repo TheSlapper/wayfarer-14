@@ -15,7 +15,7 @@
   parent: ClothingNeckBase
   id: SLClothingUniformShinelVampir
   name: aristocrat cloak
-  description: A dark leather greatcoat.
+  description: A dark leather greatcoat. # wayfarer
   components:
   - type: Sprite
     sprite: _Starlight/Clothing/Neck/Cloaks/ari.rsi

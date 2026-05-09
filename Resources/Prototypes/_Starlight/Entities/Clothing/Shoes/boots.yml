@@ -4,7 +4,7 @@
   parent: ClothingShoesBaseButcherable
   id: SLClothingUniformBootsVampir
   name: aristocrat boots
-  description: Old boots with a gray sole.
+  description: Old boots with a gray sole. # wayfarer
   components:
   - type: Sprite
     sprite: _Starlight/Clothing/Shoes/Boots/ari.rsi
