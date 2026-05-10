@@ -15,10 +15,6 @@
       "directions": 4
     },
     {
-      "name": "GREEN-equipped-OUTERCLOTHING-anomalocarid",
-      "directions": 4
-    },
-    {
       "name": "GREEN-inhand-left",
       "directions": 4
     },
@@ -31,10 +27,6 @@
     },
     {
       "name": "WHITE-equipped-OUTERCLOTHING",
-      "directions": 4
-    },
-    {
-      "name": "WHITE-equipped-OUTERCLOTHING-anomalocarid",
       "directions": 4
     },
     {
@@ -57,14 +49,6 @@
       "directions": 4
     },
     {
-      "name": "QM-equipped-OUTERCLOTHING-anomalocarid",
-      "directions": 4
-    },
-    {
-      "name": "QM-equipped-NECK-anomalocarid",
-      "directions": 4
-    },
-    {
       "name": "QM-inhand-left",
       "directions": 4
     },
@@ -77,10 +61,6 @@
     },
     {
       "name": "BLACK-equipped-OUTERCLOTHING",
-      "directions": 4
-    },
-    {
-      "name": "BLACK-equipped-OUTERCLOTHING-anomalocarid",
       "directions": 4
     },
     {
