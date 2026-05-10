@@ -2969,3 +2969,172 @@
   equipment:
     jumpsuit: SLClothingUniformJumpsuitMimeSuaveBlack
   groupBy: "mime"
+
+# Impstation clothing
+- type: loadout
+  id: WFIMPClothingUniformCircusClown
+  price: 500
+  equipment:
+    jumpsuit: IMPClothingUniformCircusClown
+  groupBy: "clown"
+
+- type: loadout
+  id: WFIMPClothingUniformJokester
+  price: 500
+  equipment:
+    jumpsuit: IMPClothingUniformJokester
+  groupBy: "clown"
+
+- type: loadout
+  id: WFIMPClothingUniformJesterEvil
+  price: 500
+  equipment:
+    jumpsuit: IMPClothingUniformJesterEvil
+  groupBy: "clown"
+
+- type: loadout
+  id: WFIMPClothingUniformJumpsuitMimeCropped
+  price: 500
+  equipment:
+    jumpsuit: IMPClothingUniformJumpsuitMimeCropped
+  groupBy: "mime"
+
+- type: loadout
+  id: WFIMPClothingUniformJumpsuitMimeNouveau
+  price: 500
+  equipment:
+    jumpsuit: IMPClothingUniformJumpsuitMimeNouveau
+  groupBy: "mime"
+
+- type: loadout
+  id: WFIMPClothingUniformHitmanSuit
+  price: 500
+  equipment:
+    jumpsuit: IMPClothingUniformHitmanSuit
+  groupBy: "fancySuit"
+
+- type: loadout
+  id: WFIMPClothingUniformFuneralSuit
+  price: 500
+  equipment:
+    jumpsuit: IMPClothingUniformFuneralSuit
+  groupBy: "fancySuit"
+
+- type: loadout
+  id: WFIMPClothingUniformNightclubSuit
+  price: 500
+  equipment:
+    jumpsuit: IMPClothingUniformNightclubSuit
+  groupBy: "fancySuit"
+
+- type: loadout
+  id: WFIMPClothingUniformMrSpaceWide
+  price: 500
+  equipment:
+    jumpsuit: IMPClothingUniformMrSpaceWide
+  groupBy: "fancySuit"
+
+- type: loadout
+  id: WFIMPClothingUniformBrownSuit
+  price: 500
+  equipment:
+    jumpsuit: IMPClothingUniformBrownSuit
+  groupBy: "fancySuit"
+
+- type: loadout
+  id: WFIMPClothingUniformCreamSuit
+  price: 500
+  equipment:
+    jumpsuit: IMPClothingUniformCreamSuit
+  groupBy: "fancySuit"
+
+- type: loadout
+  id: WFIMPClothingUniformDetectiveSuit
+  price: 500
+  equipment:
+    jumpsuit: IMPClothingUniformDetectiveSuit
+  groupBy: "fancySuit"
+
+- type: loadout
+  id: WFIMPClothingUniformMiamiVice
+  price: 500
+  equipment:
+    jumpsuit: IMPClothingUniformMiamiVice
+  groupBy: "fancySuit"
+
+- type: loadout
+  id: WFIMPClothingUniformJumpsuitTailcoatSuit
+  price: 500
+  equipment:
+    jumpsuit: IMPClothingUniformJumpsuitTailcoatSuit
+  groupBy: "fancySuit"
+
+- type: loadout
+  id: WFIMPClothingUniformSeniorBartender
+  price: 500
+  equipment:
+    jumpsuit: IMPClothingUniformSeniorBartender
+  groupBy: "jumpsuitBartender"
+
+- type: loadout
+  id: WFIMPClothingUniformBurglarJumpsuit
+  price: 500
+  equipment:
+    jumpsuit: IMPClothingUniformBurglarJumpsuit
+  groupBy: "casualJumpsuit"
+
+- type: loadout
+  id: WFIMPClothingUniformBrosBlazer
+  price: 500
+  equipment:
+    jumpsuit: IMPClothingUniformBrosBlazer
+  groupBy: "casualJumpsuit"
+
+- type: loadout
+  id: WFIMPClothingUniformSailorSuit
+  price: 500
+  equipment:
+    jumpsuit: IMPClothingUniformSailorSuit
+  groupBy: "casualJumpsuit"
+
+- type: loadout
+  id: WFIMPClothingUniformJumpsuitCourier
+  price: 500
+  equipment:
+    jumpsuit: IMPClothingUniformJumpsuitCourier
+  groupBy: "casualJumpsuit"
+
+- type: loadout
+  id: WFIMPClothingUniformJumpsuitMusicianMarchingBand
+  price: 500
+  equipment:
+    jumpsuit: IMPClothingUniformJumpsuitMusicianMarchingBand
+  groupBy: "casualJumpsuit"
+
+- type: loadout
+  id: WFIMPClothingUniformSpaceJumpsuitCasualBrown
+  price: 500
+  equipment:
+    jumpsuit: IMPClothingUniformSpaceJumpsuitCasualBrown
+  groupBy: "spaceCasualJumpsuit"
+
+- type: loadout
+  id: WFIMPClothingUniformSpaceJumpsuitCasualTriColor
+  price: 500
+  equipment:
+    jumpsuit: IMPClothingUniformSpaceJumpsuitCasualTriColor
+  groupBy: "spaceCasualJumpsuit"
+
+- type: loadout
+  id: WFIMPClothingUniformSpaceJumpsuitCasualMulti
+  price: 500
+  equipment:
+    jumpsuit: IMPClothingUniformSpaceJumpsuitCasualMulti
+  groupBy: "spaceCasualJumpsuit"
+
+- type: loadout
+  id: WFIMPClothingUniformSpaceJumpsuitCasualBlue
+  price: 500
+  equipment:
+    jumpsuit: IMPClothingUniformSpaceJumpsuitCasualBlue
+  groupBy: "spaceCasualJumpsuit"

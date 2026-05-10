@@ -1060,3 +1060,99 @@
   price: 1000
   equipment:
     head: SLRedRegaliaHat
+
+# Impstation clothing
+- type: loadout
+  id: WFIMPClothingHeadHatCircusClown
+  price: 500
+  equipment:
+    head: IMPClothingHeadHatCircusClown
+  groupBy: "clown"
+
+- type: loadout
+  id: WFIMPClothingHeadJesterEvilHat
+  price: 500
+  equipment:
+    head: IMPClothingHeadJesterEvilHat
+  groupBy: "clown"
+
+- type: loadout
+  id: WFIMPClothingHeadHatMimeBowler
+  price: 500
+  equipment:
+    head: IMPClothingHeadHatMimeBowler
+
+- type: loadout
+  id: WFIMPClothingHeadDeerstalker
+  price: 500
+  equipment:
+    head: IMPClothingHeadDeerstalker
+  groupBy: "caps"
+
+- type: loadout
+  id: WFIMPClothingHeadSailorCap
+  price: 500
+  equipment:
+    head: IMPClothingHeadSailorCap
+  groupBy: "caps"
+
+
+- type: loadout
+  id: WFIMPClothingHeadHatBucketHat
+  price: 500
+  equipment:
+    head: IMPClothingHeadHatBucketHat
+  groupBy: "caps"
+
+- type: loadout
+  id: WFIMPClothingHeadHatCuteTiara
+  price: 1000
+  equipment:
+    head: IMPClothingHeadHatCuteTiara
+  groupBy: "tiara"
+
+- type: loadout
+  id: WFIMPClothingHeadHatSimpleTiara
+  price: 1000
+  equipment:
+    head: IMPClothingHeadHatSimpleTiara
+  groupBy: "tiara"
+
+- type: loadout
+  id: WFIMPClothingHeadHatPrincess
+  price: 1000
+  equipment:
+    head: IMPClothingHeadHatPrincess
+  groupBy: "tiara"
+
+- type: loadout
+  id: WFIMPClothingHeadHatPompombow
+  price: 500
+  equipment:
+    head: IMPClothingHeadHatPompombow
+  groupBy: "pompom"
+
+- type: loadout
+  id: WFIMPClothingHeadHatPompomear
+  price: 500
+  equipment:
+    head: IMPClothingHeadHatPompomear
+  groupBy: "pompom"
+
+- type: loadout
+  id: WFIMPClothingHeadDevilHorns
+  price: 500
+  equipment:
+    head: IMPClothingHeadDevilHorns
+
+- type: loadout
+  id: WFIMPClothingHeadFloatingFloraCrown
+  price: 1000
+  equipment:
+    head: IMPClothingHeadFloatingFloraCrown
+
+- type: loadout
+  id: WFIMPClothingHeadHatGreenEscoffion
+  price: 500
+  equipment:
+    head: IMPClothingHeadHatGreenEscoffion

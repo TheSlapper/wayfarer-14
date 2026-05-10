@@ -383,6 +383,31 @@
   - WFSLVintageUniformSuit
   - WFSLCargoOverallsUniformSuit
   - WFSLRedRegaliaSuit
+  # Impstation clothing
+  - WFIMPClothingUniformCircusClown
+  - WFIMPClothingUniformJokester
+  - WFIMPClothingUniformHitmanSuit
+  - WFIMPClothingUniformBurglarJumpsuit
+  - WFIMPClothingUniformFuneralSuit
+  - WFIMPClothingUniformNightclubSuit
+  - WFIMPClothingUniformMrSpaceWide
+  - WFIMPClothingUniformBrownSuit
+  - WFIMPClothingUniformCreamSuit
+  - WFIMPClothingUniformDetectiveSuit
+  - WFIMPClothingUniformMiamiVice
+  - WFIMPClothingUniformSeniorBartender
+  - WFIMPClothingUniformBrosBlazer
+  - WFIMPClothingUniformJesterEvil
+  - WFIMPClothingUniformSailorSuit
+  - WFIMPClothingUniformJumpsuitMimeCropped
+  - WFIMPClothingUniformJumpsuitMimeNouveau
+  - WFIMPClothingUniformJumpsuitCourier
+  - WFIMPClothingUniformSpaceJumpsuitCasualBrown
+  - WFIMPClothingUniformSpaceJumpsuitCasualTriColor
+  - WFIMPClothingUniformSpaceJumpsuitCasualMulti
+  - WFIMPClothingUniformSpaceJumpsuitCasualBlue
+  - WFIMPClothingUniformJumpsuitMusicianMarchingBand
+  - WFIMPClothingUniformJumpsuitTailcoatSuit
   fallbacks:
   - WFClothingUniformJumpsuitColorGrey
   - WFClothingUniformJumpskirtColorGrey
@@ -599,6 +624,31 @@
   - WFWetFloorSign
   - WFClothingOuterCoatExpensive
   - WFClothingOuterCoatSpaceAsshole
+  # Impstation clothing
+  - WFIMPClothingOuterCoatJokester
+  - WFIMPClothingOuterCoatPufferDark
+  - WFIMPClothingOuterCoatPufferRed
+  - WFIMPClothingOuterCoatPufferBlue
+  - WFIMPClothingOuterCoatPufferMime
+  - WFIMPClothingOuterCoatPufferSilver
+  - WFIMPClothingOuterCoatPufferPink
+  - WFIMPClothingOuterCoatBomberBlack
+  - WFIMPClothingOuterCoatBomberWhite
+  - WFIMPClothingOuterCoatBomberCargo
+  - WFIMPClothingOuterCoatBomberAtmosHolo
+  - WFIMPClothingOuterCoatWebSweater
+  - WFIMPClothingOuterCoatMusicianFurCoat
+  - WFIMPClothingOuterCoatVRexFurCoat
+  - WFIMPClothingOuterRainCape
+  - WFIMPClothingOuterWhitePoncho
+  - WFIMPClothingOuterQMPoncho
+  - WFIMPClothingOuterBlackPoncho
+  - WFIMPClothingOuterCowVest
+  - WFIMPClothingOuterBlackVest
+  - WFIMPClothingOuterChapsBrown
+  - WFIMPClothingOuterChapsWhite
+  - WFIMPClothingOuterChapsBlack
+  - WFIMPClothingOuterChapsFancy
 
 # == BELT
 - type: loadoutGroup
@@ -866,6 +916,21 @@
   # Starlight clothing
   - WFSLClothingHeadBase0121
   - WFSLRedRegaliaHat
+  # Impstation clothing
+  - WFIMPClothingHeadHatCircusClown
+  - WFIMPClothingHeadDevilHorns
+  - WFIMPClothingHeadJesterEvilHat
+  - WFIMPClothingHeadDeerstalker
+  - WFIMPClothingHeadSailorCap
+  - WFIMPClothingHeadFloatingFloraCrown
+  - WFIMPClothingHeadHatMimeBowler
+  - WFIMPClothingHeadHatBucketHat
+  - WFIMPClothingHeadHatPompombow
+  - WFIMPClothingHeadHatPompomear
+  - WFIMPClothingHeadHatCuteTiara
+  - WFIMPClothingHeadHatSimpleTiara
+  - WFIMPClothingHeadHatPrincess
+  - WFIMPClothingHeadHatGreenEscoffion
 
 # == HEADSETS
 - type: loadoutGroup
