@@ -1156,3 +1156,9 @@
   price: 500
   equipment:
     head: IMPClothingHeadHatGreenEscoffion
+
+- type: loadout
+  id: WFIMPClothingHeadHatBlackVeil
+  price: 500
+  equipment:
+    head: IMPClothingHeadHatBlackVeil

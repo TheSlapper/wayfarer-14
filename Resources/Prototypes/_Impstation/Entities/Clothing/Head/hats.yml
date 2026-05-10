@@ -199,3 +199,14 @@
     sprite: _Impstation/Clothing/Head/Hats/greenescoffion.rsi
   - type: Clothing
     sprite: _Impstation/Clothing/Head/Hats/greenescoffion.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: IMPClothingHeadHatBlackVeil
+  name: black veil
+  description: A sheer black veil draped with quiet ceremony. Perfect for mourning, or simply looking like you have something to mourn.
+  components:
+  - type: Sprite
+    sprite: _Impstation/Clothing/Head/Hats/blackveil.rsi
+  - type: Clothing
+    sprite: _Impstation/Clothing/Head/Hats/blackveil.rsi
