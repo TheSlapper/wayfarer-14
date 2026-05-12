@@ -1338,3 +1338,48 @@
   price: 500
   equipment:
     outerClothing: IMPClothingOuterRainCape
+# DeltaV clothing
+- type: loadout
+  id: WFDVClothingOuterCoatOvercoat
+  hideEffects:
+  - !type:GroupLoadoutEffect
+    proto: NFCoatCapable
+  price: 1000
+  equipment:
+    outerClothing: DVClothingOuterCoatOvercoat
+
+- type: loadout
+  id: WFDVClothingOuterCoatLeatherJacket
+  hideEffects:
+  - !type:GroupLoadoutEffect
+    proto: NFCoatCapable
+  price: 1000
+  equipment:
+    outerClothing: DVClothingOuterCoatLeatherJacket
+
+- type: loadout
+  id: WFDVClothingOuterDusterCoat
+  hideEffects:
+  - !type:GroupLoadoutEffect
+    proto: NFCoatCapable
+  price: 1000
+  equipment:
+    outerClothing: DVClothingOuterDusterCoat
+
+- type: loadout
+  id: WFDVClothingOuterCoatNavalCoat
+  hideEffects:
+  - !type:GroupLoadoutEffect
+    proto: NFCoatCapable
+  price: 1000
+  equipment:
+    outerClothing: DVClothingOuterCoatNavalCoat
+
+- type: loadout
+  id: WFDVClothingOuterClerkVest
+  hideEffects:
+  - !type:GroupLoadoutEffect
+    proto: NFCoatCapable
+  price: 650
+  equipment:
+    outerClothing: DVClothingOuterClerkVest
