@@ -12,6 +12,21 @@ trait-claybody-desc = Your body is made of living clay. Others can pluck pieces 
 
 loadout-trait-restriction = Requires the { $trait } trait.
 
+## Juggling system
+
+juggling-action-popup = You start juggling!
+juggling-no-gravity = You can't juggle without gravity!
+
+## Balloon twisting system
+
+balloon-twist-verb-category = Twist into...
+balloon-twist-shape-dog = Dog
+balloon-twist-shape-clown = Clown
+balloon-twist-shape-banana = Banana
+balloon-twist-shape-cat = Cat
+balloon-twist-shape-moth = Moth
+balloon-twist-success = You twist the balloon into shape!
+
 ## Clay Body system
 
 clay-body-verb-pluck = Pluck Clay

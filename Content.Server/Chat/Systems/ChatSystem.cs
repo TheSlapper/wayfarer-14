@@ -12,6 +12,7 @@ using Content.Server.Speech.Prototypes;
 using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
 using Content.Shared._WF;
+using Content.Shared._WF.Chat;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
@@ -514,11 +515,16 @@ public sealed partial class ChatSystem : SharedChatSystem
         chatColorSemiTransparent.A = 0.5f; // COYOTESTATION ADD - make the chat color semi-transparent, so it looks better
         var chatColorSemiTransparentActually = chatColorSemiTransparent.ToHex(); // COYOTATION ADD - make the chat color semi-transparent, so it looks better
 
+        var appearanceEv = new TransformSpeechAppearanceEvent(); // Wayfarer
+        RaiseLocalEvent(source, appearanceEv); // Wayfarer
+        var fontId = appearanceEv.FontId ?? speech.FontId; // Wayfarer
+        var fontSize = appearanceEv.FontSize ?? speech.FontSize; // Wayfarer
+
         var wrappedMessage = Loc.GetString(speech.Bold ? "chat-manager-entity-say-bold-wrap-message" : "chat-manager-entity-say-wrap-message",
             ("entityName", name),
             ("verb", Loc.GetString(_random.Pick(speech.SpeechVerbStrings))),
-            ("fontType", speech.FontId),
-            ("fontSize", speech.FontSize),
+            ("fontType", fontId),
+            ("fontSize", fontSize),
             ("message", FormattedMessage.EscapeText(message)),
             ("color", chatColor ?? Color.White.ToHex())); // COYOTESTATION ADD - makes the your name color right
         // and the above message, but the font is shrunken by like 20%
@@ -526,8 +532,8 @@ public sealed partial class ChatSystem : SharedChatSystem
         var wrappedMessageSmall = Loc.GetString(speech.Bold ? "chat-manager-entity-say-bold-wrap-message" : "chat-manager-entity-say-wrap-message",
             ("entityName", name),
             ("verb", Loc.GetString(_random.Pick(speech.SpeechVerbStrings))),
-            ("fontType", speech.FontId),
-            ("fontSize", Convert.ToInt16(speech.FontSize * 0.7)), // COYOTESTATION ADD - shrunken by 20%
+            ("fontType", fontId),
+            ("fontSize", Convert.ToInt16(fontSize * 0.7)), // COYOTESTATION ADD - shrunken by 20%
             ("message", FormattedMessage.EscapeText(message)),
             ("color", chatColorSemiTransparentActually)); // COYOTESTATION ADD - makes the your name color right
         // COYOTESTATION ADD END

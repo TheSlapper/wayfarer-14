@@ -1385,6 +1385,7 @@
   - WFClothingMaskSadMime
   - WFClothingMaskClown
   - WFClothingMaskClownBald
+  - WFClothingMaskClownNose # Wayfarer
   fallbacks:
   - WFClothingMaskBreath
 

@@ -7,9 +7,9 @@
   category: Quirks
   components:
     - type: ClownTraining
-    - type: AutoEmote
-      emotes:
-      - ClownGiggle
+    - type: Juggling
+    - type: SpeakFontOverride
+      fontId: ComicNeue
 
 - type: trait
   id: Carnivore
