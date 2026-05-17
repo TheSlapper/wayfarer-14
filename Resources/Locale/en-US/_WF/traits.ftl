@@ -10,6 +10,9 @@ trait-herbivore-desc = You are a Herbivore, you can only eat products that conta
 trait-claybody-name = Clay Body
 trait-claybody-desc = Your body is made of living clay. Others can pluck pieces from you, and you'll slowly grow back to your full size.
 
+trait-mime-name = Mime
+trait-mime-desc = You have taken the mime's vow of silence.
+
 loadout-trait-restriction = Requires the { $trait } trait.
 
 ## Clay Body system
