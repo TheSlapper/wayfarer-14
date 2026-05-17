@@ -523,7 +523,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         var wrappedMessage = Loc.GetString(speech.Bold ? "chat-manager-entity-say-bold-wrap-message" : "chat-manager-entity-say-wrap-message",
             ("entityName", name),
             ("verb", Loc.GetString(_random.Pick(speech.SpeechVerbStrings))),
-            ("fontType", fontId),
+            ("fontType", fontId), // Wayfarer: use variable above
             ("fontSize", fontSize),
             ("message", FormattedMessage.EscapeText(message)),
             ("color", chatColor ?? Color.White.ToHex())); // COYOTESTATION ADD - makes the your name color right
