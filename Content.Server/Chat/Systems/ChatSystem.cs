@@ -533,7 +533,7 @@ public sealed partial class ChatSystem : SharedChatSystem
             ("entityName", name),
             ("verb", Loc.GetString(_random.Pick(speech.SpeechVerbStrings))),
             ("fontType", fontId),
-            ("fontSize", Convert.ToInt16(fontSize * 0.7)), // COYOTESTATION ADD - shrunken by 20%
+            ("fontSize", Convert.ToInt16(fontSize * 0.7)), // COYOTESTATION ADD - shrunken by 20% // Wayfarer: use variable above
             ("message", FormattedMessage.EscapeText(message)),
             ("color", chatColorSemiTransparentActually)); // COYOTESTATION ADD - makes the your name color right
         // COYOTESTATION ADD END
