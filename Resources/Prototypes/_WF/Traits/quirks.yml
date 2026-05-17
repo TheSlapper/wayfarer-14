@@ -36,3 +36,12 @@
   category: Quirks
   components:
     - type: WFClayBody
+
+- type: trait
+  id: Mime
+  name: trait-mime-name
+  description: trait-mime-desc
+  category: Quirks
+  components:
+    - type: MimePowers
+      preventWriting: true
