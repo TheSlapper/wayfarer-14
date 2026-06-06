@@ -17,4 +17,4 @@ prayer-log-alert-toggle-tooltip = Play a sound on this client when a new prayer 
 prayer-log-follow = Follow
 prayer-log-follow-tooltip = Follow this player.
 
-cmd-prayerlog-desc = Opens the pray log.
+cmd-prayerlog-desc = Opens the prayer log.

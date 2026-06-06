@@ -24,12 +24,15 @@ public sealed partial class PrayerLogWindow : DefaultWindow
     private const int FollowColWidth = 80;
 
     private BoxContainer _entriesContainer = default!;
+    private Label _headerContent = default!;
 
     private readonly IConfigurationManager _cfg;
 
     public event Action<NetUserId>? OnFollowRequested;
 
     private IEnumerable<PrayerLogEntryRow> Rows => _entriesContainer.Children.OfType<PrayerLogEntryRow>();
+
+    private float ContentWidth => Math.Max(Width * 0.32f, 150f);
 
     public PrayerLogWindow()
     {
@@ -38,7 +41,7 @@ public sealed partial class PrayerLogWindow : DefaultWindow
         BuildScrollBody();
 
         SearchBox.OnTextChanged += _ => UpdateFilter();
-        OnResized += UpdateContentMaxWidths;
+        OnResized += RefreshContentWidth;
 
         AlertCheckBox.Pressed = _cfg.GetCVar(WFCVars.AdminPrayerAlert);
         AlertCheckBox.OnToggled += args =>
@@ -61,7 +64,7 @@ public sealed partial class PrayerLogWindow : DefaultWindow
         ScrollBody.AddChild(_entriesContainer);
     }
 
-    private static BoxContainer BuildHeaderRow()
+    private BoxContainer BuildHeaderRow()
     {
         var row = new BoxContainer
         {
@@ -69,14 +72,16 @@ public sealed partial class PrayerLogWindow : DefaultWindow
             SeparationOverride = 4,
             Margin = new Thickness(0, 0, 0, 2),
         };
-        // Leading cell matches the per-row Follow button's fixed width so the columns line up.
+
+        _headerContent = Cell(Loc.GetString("prayer-log-column-content"), ContentRatio, heading: true);
+        PinContentWidth(_headerContent, ContentWidth);
         AddColumns(row,
             new Control { MinWidth = FollowColWidth, MaxWidth = FollowColWidth },
             Cell(Loc.GetString("prayer-log-column-time"), TimeRatio, heading: true),
             Cell(Loc.GetString("prayer-log-column-player"), PlayerRatio, heading: true),
             Cell(Loc.GetString("prayer-log-column-item"), ItemRatio, heading: true),
             Cell(Loc.GetString("prayer-log-column-type"), TypeRatio, heading: true),
-            Cell(Loc.GetString("prayer-log-column-content"), ContentRatio, heading: true));
+            _headerContent);
         return row;
     }
 
@@ -107,27 +112,36 @@ public sealed partial class PrayerLogWindow : DefaultWindow
         return label;
     }
 
+    // Pins a cell to a fixed width so it neither expands nor grows with its content.
+    private static void PinContentWidth(Control cell, float width)
+    {
+        cell.HorizontalExpand = false;
+        cell.MinWidth = width;
+        cell.MaxWidth = width;
+    }
+
     public void Populate(List<PrayerLogEntry> entries)
     {
         _entriesContainer.RemoveAllChildren();
 
         foreach (var entry in entries)
         {
-            var row = new PrayerLogEntryRow(entry, ContentMaxWidth);
+            var row = new PrayerLogEntryRow(entry, ContentWidth);
             row.OnFollow += uid => OnFollowRequested?.Invoke(uid);
             _entriesContainer.AddChild(row);
         }
 
+        RefreshContentWidth();
         EmptyLabel.Visible = entries.Count == 0;
         UpdateFilter();
     }
 
-    private float ContentMaxWidth => Math.Max(Width * 0.32f, 150f);
-
-    private void UpdateContentMaxWidths()
+    private void RefreshContentWidth()
     {
+        var width = ContentWidth;
+        PinContentWidth(_headerContent, width);
         foreach (var row in Rows)
-            row.SetContentMaxWidth(ContentMaxWidth);
+            row.SetContentWidth(width);
     }
 
     private void UpdateFilter()
@@ -155,7 +169,7 @@ public sealed partial class PrayerLogWindow : DefaultWindow
 
         private readonly RichTextLabel _content;
 
-        public PrayerLogEntryRow(PrayerLogEntry entry, float contentMaxWidth)
+        public PrayerLogEntryRow(PrayerLogEntry entry, float contentWidth)
         {
             Entry = entry;
             Orientation = BoxContainer.LayoutOrientation.Horizontal;
@@ -171,13 +185,8 @@ public sealed partial class PrayerLogWindow : DefaultWindow
             };
             follow.OnPressed += _ => OnFollow?.Invoke(Entry.UserId);
 
-            _content = new RichTextLabel
-            {
-                HorizontalExpand = true,
-                SizeFlagsStretchRatio = ContentRatio,
-                VerticalAlignment = VAlignment.Top,
-                MaxWidth = contentMaxWidth,
-            };
+            _content = new RichTextLabel { VerticalAlignment = VAlignment.Top };
+            PinContentWidth(_content, contentWidth);
             _content.SetMessage(entry.Content);
 
             AddColumns(this,
@@ -189,7 +198,7 @@ public sealed partial class PrayerLogWindow : DefaultWindow
                 _content);
         }
 
-        public void SetContentMaxWidth(float v) => _content.MaxWidth = v;
+        public void SetContentWidth(float width) => PinContentWidth(_content, width);
 
         public bool Matches(string search) =>
             string.IsNullOrEmpty(search)
