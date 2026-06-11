@@ -1640,6 +1640,7 @@
   - WFPickaxe
   - WFHandheldGPSBasic
   - WFRadioHandheld
+  - WFPortableRadio
   - WFNetworkConfigurator
   - WFHandheldHealthAnalyzerUnpowered
   - WFAnomalyScanner
