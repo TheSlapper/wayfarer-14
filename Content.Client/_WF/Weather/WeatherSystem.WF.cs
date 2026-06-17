@@ -33,7 +33,9 @@ public sealed partial class WeatherSystem
 
     private float _audioOcclusionTarget;
     private float _audioUpdateTimer;
-    private const float AudioUpdateInterval = 0.5f;
+    private const float AudioUpdateInterval = 0.25f;
+
+    private Vector2i _audioLastTile;
 
     protected override void Run(EntityUid uid, WeatherData weather, WeatherPrototype weatherProto, float frameTime)
     {
@@ -65,18 +67,20 @@ public sealed partial class WeatherSystem
         // A new audio stream starts at full volume. Set it to the player's current muffle level
         // right away, or the weather plays loud for a few seconds before the fade settles.
         if (streamWasNull)
-            comp.Occlusion = ComputeOcclusionForLocalPlayer(weatherProto);
+            comp.Occlusion = _audioOcclusionTarget = ComputeOcclusionForLocalPlayer(weatherProto);
 
-        _audioUpdateTimer -= frameTime;
-        if (_audioUpdateTimer <= 0f)
+        if (TryComp<MapGridComponent>(entXform.GridUid, out var grid))
         {
-            _audioUpdateTimer = AudioUpdateInterval;
-            _audioOcclusionTarget = 0f;
+            var gridUid = entXform.GridUid.Value;
+            var tile = _mapSystem.TileIndicesFor(gridUid, grid, entXform.Coordinates);
+            _audioUpdateTimer -= frameTime;
 
-            if (TryComp<MapGridComponent>(entXform.GridUid, out var grid))
+            if (tile != _audioLastTile && _audioUpdateTimer <= 0f)
             {
-                TryComp(entXform.GridUid, out RoofComponent? roofComp);
-                _audioOcclusionTarget = ComputeWeatherOcclusionTier(entXform.GridUid.Value, grid, entXform.Coordinates, roofComp, weatherProto);
+                _audioUpdateTimer = AudioUpdateInterval;
+                _audioLastTile = tile;
+                TryComp(gridUid, out RoofComponent? roofComp);
+                _audioOcclusionTarget = ComputeWeatherOcclusionTier(gridUid, grid, entXform.Coordinates, roofComp, weatherProto);
             }
         }
 

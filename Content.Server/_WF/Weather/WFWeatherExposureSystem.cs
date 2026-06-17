@@ -99,9 +99,6 @@ public sealed class WFWeatherExposureSystem : EntitySystem
         QueueChange(gridUid, pos, !args.Anchored);
     }
 
-    // A wall born already anchored (spawned mid-storm) does not raise AnchorStateChanged, so catch it
-    // here. Map-loaded walls map-init before any weather is active and are picked up by the storm-start
-    // baseline instead.
     private void OnBlockWeatherMapInit(Entity<BlockWeatherComponent> ent, ref MapInitEvent args)
     {
         if (!_weatherActive)
@@ -193,9 +190,6 @@ public sealed class WFWeatherExposureSystem : EntitySystem
     {
         var tile = _mapSystem.GetTileRef(gridUid, grid, pos);
 
-        // A newly empty tile is itself the opening, so it always connects. A wall breaking on a solid
-        // tile only counts if that tile already touches space or an open tile, or breaking a wall deep
-        // inside a still-sealed pocket would wrongly expose it.
         if (!tile.Tile.IsEmpty)
         {
             var connected = false;
@@ -241,7 +235,6 @@ public sealed class WFWeatherExposureSystem : EntitySystem
             {
                 changed = true;
 
-                // Weather treats this as a roofed tile since it was indoors before the wall broke.
                 if (_baselined.Contains(gridUid))
                 {
                     _builtFromEmpty.TryGetValue(gridUid, out var built);
