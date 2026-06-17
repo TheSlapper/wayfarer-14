@@ -168,8 +168,8 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
     }
 
     private void OnConsoleUIOpenAttempt(EntityUid uid, ShuttleConsoleComponent component,
-        // Wayfarer: Fixes intercomm flight bug.
-        AfterActivatableUIOpenEvent args)
+        //ActivatableUIOpenAttemptEvent args)
+        AfterActivatableUIOpenEvent args) // Wayfarer: Fixes intercomm flight bug.
     {
         TryPilot(args.User, uid);
         // End Wayfarer
