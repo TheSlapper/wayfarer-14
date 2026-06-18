@@ -383,7 +383,7 @@ public sealed class RadioBroadcastSystem : EntitySystem
             _rangeCheckTimer = 0f;
 
         UpdateBroadcasterUploads(checkRange);
-        UpdateReceiverRenderers();
+        UpdateReceiverRenderers(checkRange);
     }
 
     private void UpdateBroadcasterUploads(bool checkRange)
@@ -393,7 +393,7 @@ public sealed class RadioBroadcastSystem : EntitySystem
         {
             var renderer = instrument.Renderer;
             var hasRenderer = renderer != null && !renderer.Disposed;
-            var shouldMaintain = hasRenderer && (instrument.IsMidiOpen || console.Broadcasting);
+            var shouldMaintain = hasRenderer;
 
             if (!shouldMaintain)
             {
@@ -453,6 +453,8 @@ public sealed class RadioBroadcastSystem : EntitySystem
 
             if (isBroadcaster)
             {
+                renderer!.VelocityOverride = null;
+
                 if (hook.LastAppliedPresets.Count > 0 && PresetSlotsDrifted(renderer!, hook.Slaves, hook.LastAppliedPresets))
                     hook.LastAppliedPresets.Clear();
 
@@ -464,8 +466,7 @@ public sealed class RadioBroadcastSystem : EntitySystem
             }
             else
             {
-                // Mute this console for nearby players, or they hear the wrong music.
-                renderer!.FilteredChannels.SetAll(true);
+                renderer!.VelocityOverride = 0;
 
                 if (refreshRange)
                     hook.InRange = LocalPlayerInRange(consoleUid, hook.Puppet != null);
@@ -489,7 +490,7 @@ public sealed class RadioBroadcastSystem : EntitySystem
 
                 if (hook.Puppet is { Disposed: false } puppetMaster)
                 {
-                    if (hook.LastAppliedPresets.Count > 0 && PresetSlotsDrifted(puppetMaster, hook.Slaves, hook.LastAppliedPresets))
+                    if (checkRange && hook.LastAppliedPresets.Count > 0 && PresetSlotsDrifted(puppetMaster, hook.Slaves, hook.LastAppliedPresets))
                         hook.LastAppliedPresets.Clear();
 
                     if (SelectionChanged(hook.LastAppliedPresets, selection))
@@ -554,15 +555,36 @@ public sealed class RadioBroadcastSystem : EntitySystem
         hook.Pending.Clear();
         ReleasePuppet(hook);
 
-        // Unmute the console for normal play once the broadcast ends.
         if (!hook.Renderer.Disposed)
+        {
             hook.Renderer.FilteredChannels.SetAll(false);
+            hook.Renderer.VelocityOverride = null;
+        }
 
         _uploadHooks.Remove(consoleUid);
     }
 
     private void OnRadioMidiRelay(RadioMidiRelayEvent ev)
     {
+        // Stop the sound when the song stops, or the last note drones on.
+        if (IsStopSignal(ev.MidiEvents))
+        {
+            foreach (var rr in _receiverRenderers.Values)
+            {
+                if (rr.Console != ev.Console || rr.Channel != ev.Channel || rr.Renderer.Disposed)
+                    continue;
+
+                rr.Renderer.StopAllNotes();
+                foreach (var slave in rr.Slaves)
+                {
+                    if (!slave.Disposed)
+                        slave.StopAllNotes();
+                }
+                rr.Anchored = false;
+            }
+            return;
+        }
+
         var firstTick = ev.MidiEvents[0].Tick;
         for (var i = 1; i < ev.MidiEvents.Length; i++)
         {
@@ -628,7 +650,13 @@ public sealed class RadioBroadcastSystem : EntitySystem
         }
     }
 
-    private void UpdateReceiverRenderers()
+    private static bool IsStopSignal(RobustMidiEvent[] events)
+        => events.Length == 1
+           && events[0].MidiCommand == RobustMidiCommand.SystemMessage
+           && events[0].Control == 0x0
+           && events[0].Status == 0xFF;
+
+    private void UpdateReceiverRenderers(bool checkPresets)
     {
         _reapBuffer.Clear();
         foreach (var (receiverUid, rr) in _receiverRenderers)
@@ -638,6 +666,9 @@ public sealed class RadioBroadcastSystem : EntitySystem
                 _reapBuffer.Add(receiverUid);
                 continue;
             }
+
+            if (!checkPresets)
+                continue;
 
             if (!TryGetEntity(rr.Console, out var consoleUid)
                 || !TryComp<RadioBroadcastConsoleComponent>(consoleUid, out var consoleComp))
@@ -703,7 +734,7 @@ public sealed class RadioBroadcastSystem : EntitySystem
             DetachReceiver(receiverUid, existing);
         }
 
-        var renderer = _midiManager.GetNewRenderer();
+        var renderer = RentRenderer();
         if (renderer == null)
             return null;
 
@@ -740,8 +771,17 @@ public sealed class RadioBroadcastSystem : EntitySystem
     {
         ReleaseSlaves(rr.Slaves, 0);
         rr.LastAppliedPresets.Clear();
-        rr.Renderer.SystemReset();
-        rr.Renderer.ClearAllEvents();
+
+        if (!rr.Renderer.Disposed)
+        {
+            rr.Renderer.Master = null;
+            rr.Renderer.SystemReset();
+            rr.Renderer.ClearAllEvents();
+            for (var c = 0; c < rr.Renderer.FilteredChannels.Count; c++)
+                rr.Renderer.FilteredChannels[c] = true;
+            _freeRenderers.Add(rr.Renderer);
+        }
+
         _receiverRenderers.Remove(receiverUid);
     }
 

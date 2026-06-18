@@ -78,8 +78,9 @@ wf-radio-preset-tom-drums = Tom Drums
 # Shown to the player when another radio console already uses the channel they try to broadcast on. { $n } is the channel number.
 wf-radio-console-channel-taken = Channel { $n } is already in use.
 
-# { $receiver } is the radio's name, { $originalName } is the speaker's name.
-wf-radio-speech-name-relay = { $receiver } ({ $originalName })
+# { $name } is the bracketed speaker name, { $message } is what they said, { $color } is their chat color.
+# Color sits inside both tags so the accessibility toggles for name and body color do not strip it.
+wf-radio-speech-bubble = [BubbleHeader][color={ $color }][bold]{ $name }[/bold][/color][/BubbleHeader] [BubbleContent][color={ $color }]"{ $message }"[/color][/BubbleContent]
 
 # Portable receiver UI.
 wf-radio-receiver-menu-title = Portable Radio

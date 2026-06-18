@@ -1,13 +1,16 @@
 ﻿using System.Linq;
-using Content.Server.Chat.Systems;
+using Content.Server.Chat.Managers;
 using Content.Server.Popups;
 using Content.Server.Speech;
 using Content.Shared.Speech;
 using Content.Shared.Speech.Components;
+using Content.Shared._WF;
 using Content.Shared._WF.Radio;
 using Content.Server.Instruments;
 using Content.Shared.Chat;
+using Content.Shared.IdentityManagement;
 using Content.Shared.Instruments;
+using Content.Shared.Interaction;
 using Content.Shared.Item;
 using Content.Shared.UserInterface;
 using Content.Shared.Verbs;
@@ -17,6 +20,7 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Utility;
 
 namespace Content.Server._WF.Radio;
 
@@ -25,7 +29,7 @@ public sealed class RadioBroadcastSystem : EntitySystem
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
     [Dependency] private readonly InstrumentSystem _instruments = default!;
     [Dependency] private readonly PopupSystem _popup = default!;
-    [Dependency] private readonly ChatSystem _chat = default!;
+    [Dependency] private readonly IChatManager _chatManager = default!;
     [Dependency] private readonly PvsOverrideSystem _pvsOverride = default!;
     [Dependency] private readonly IPrototypeManager _protos = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
@@ -47,9 +51,10 @@ public sealed class RadioBroadcastSystem : EntitySystem
         SubscribeLocalEvent<RadioBroadcastConsoleComponent, RadioBroadcastConsoleSetNameMessage>(OnConsoleSetName);
         SubscribeLocalEvent<RadioBroadcastConsoleComponent, RadioBroadcastConsoleToggleMessage>(OnConsoleToggle);
         SubscribeLocalEvent<RadioBroadcastConsoleComponent, RadioBroadcastConsoleSetPresetsMessage>(OnConsoleSetPresets);
-        SubscribeLocalEvent<RadioBroadcastConsoleComponent, MapInitEvent>(OnConsoleMapInit);
         SubscribeLocalEvent<RadioBroadcastConsoleComponent, ComponentShutdown>(OnConsoleShutdown);
         SubscribeLocalEvent<RadioBroadcastConsoleComponent, GetVerbsEvent<AlternativeVerb>>(OnConsoleGetAltVerbs);
+        SubscribeLocalEvent<RadioBroadcastConsoleComponent, BoundUserInterfaceCheckRangeEvent>(OnConsoleCheckRange,
+            after: new[] { typeof(SharedInteractionSystem) });
 
         SubscribeLocalEvent<RadioReceiverComponent, BeforeActivatableUIOpenEvent>(OnReceiverUiOpen);
         SubscribeLocalEvent<RadioReceiverComponent, RadioReceiverSetChannelMessage>(OnReceiverSetChannel);
@@ -129,6 +134,12 @@ public sealed class RadioBroadcastSystem : EntitySystem
         });
     }
 
+    // Keep the menu open when the user walks away, so the broadcast keeps playing.
+    private void OnConsoleCheckRange(Entity<RadioBroadcastConsoleComponent> ent, ref BoundUserInterfaceCheckRangeEvent args)
+    {
+        args.Result = BoundUserInterfaceRangeResult.Pass;
+    }
+
     private void OnConsoleSetChannel(Entity<RadioBroadcastConsoleComponent> ent, ref RadioBroadcastConsoleSetChannelMessage args)
     {
         if (ent.Comp.Broadcasting)
@@ -179,12 +190,6 @@ public sealed class RadioBroadcastSystem : EntitySystem
             StopBroadcasting(ent);
     }
 
-    // Keep the console visible to every client, or someone joining mid-song hears broken audio.
-    private void OnConsoleMapInit(Entity<RadioBroadcastConsoleComponent> ent, ref MapInitEvent args)
-    {
-        _pvsOverride.AddGlobalOverride(ent.Owner);
-    }
-
     private void TryStartBroadcasting(Entity<RadioBroadcastConsoleComponent> ent, EntityUid actor)
     {
         if (ent.Comp.Broadcasting)
@@ -202,6 +207,8 @@ public sealed class RadioBroadcastSystem : EntitySystem
         _activeChannels[ent.Comp.Channel] = ent.Owner;
         ent.Comp.Broadcasting = true;
         Dirty(ent);
+
+        _pvsOverride.AddGlobalOverride(ent.Owner);
 
         if (TryComp<InstrumentComponent>(ent.Owner, out var instrument))
             Dirty(ent.Owner, instrument);
@@ -221,6 +228,8 @@ public sealed class RadioBroadcastSystem : EntitySystem
 
         ent.Comp.Broadcasting = false;
         Dirty(ent);
+
+        _pvsOverride.RemoveGlobalOverride(ent.Owner);
 
         RemCompDeferred<ActiveListenerComponent>(ent);
 
@@ -249,24 +258,29 @@ public sealed class RadioBroadcastSystem : EntitySystem
         var nameEv = new TransformSpeakerNameEvent(args.Source, Name(args.Source));
         RaiseLocalEvent(args.Source, nameEv);
 
+        // Color the bubble with the speaker's chat speech color.
+        var color = ColorExtensions.ConsistentRandomSeededColorFromString(Identity.Name(args.Source, EntityManager), 149).ToHex();
+        var wrapped = Loc.GetString("wf-radio-speech-bubble",
+            ("color", color),
+            ("name", FormattedMessage.EscapeText($"[{nameEv.VoiceName}]")),
+            ("message", FormattedMessage.EscapeText(args.Message)));
+
         var query = EntityQueryEnumerator<RadioReceiverComponent>();
         while (query.MoveNext(out var receiverUid, out var receiver))
         {
             if (!receiver.PoweredOn || receiver.Channel != ent.Comp.Channel)
                 continue;
 
-            var name = Loc.GetString("wf-radio-speech-name-relay",
-                ("receiver", Name(receiverUid)),
-                ("originalName", nameEv.VoiceName));
-
             // Show the speech as a bubble over the radio, with no chat-log line.
-            _chat.TrySendInGameICMessage(
-                receiverUid,
+            _chatManager.ChatMessageToManyFiltered(
+                Filter.Pvs(receiverUid),
+                ChatChannel.Local,
                 args.Message,
-                InGameICChatType.Speak,
-                ChatTransmitRange.HideChat,
-                nameOverride: name,
-                checkRadioPrefix: false);
+                wrapped,
+                receiverUid,
+                hideChat: true,
+                recordReplay: false,
+                colorOverride: null);
         }
     }
 
