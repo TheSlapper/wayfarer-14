@@ -35,11 +35,8 @@
     - Pizza
     - ReptilianFood
   # Wayfarer: 24h shelf life for baked goods
-  - type: Perishable
-    rotAfter: 86400
-    molsPerSecondPerUnitMass: 0
-  - type: Temperature
-    currentTemperature: 290
+  - type: FoodSpoilage
+    spoilAfter: 86400
   # End Wayfarer
 
 - type: entity
@@ -73,11 +70,8 @@
     - ReptilianFood
     - Slice
   # Wayfarer: 24h shelf life for baked goods
-  - type: Perishable
-    rotAfter: 86400
-    molsPerSecondPerUnitMass: 0
-  - type: Temperature
-    currentTemperature: 290
+  - type: FoodSpoilage
+    spoilAfter: 86400
   # End Wayfarer
 
 # Pizza

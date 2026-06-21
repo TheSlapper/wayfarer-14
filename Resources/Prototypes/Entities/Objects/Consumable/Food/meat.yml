@@ -51,10 +51,9 @@
     materialComposition:
       Meaterial: 300
   # Wayfarer: 8h shelf life for cooked/cured meat. FoodMeatRawBase
-  # overrides this to 4h so raw meat still rots faster than cooked.
-  - type: Perishable
-    rotAfter: 28800
-    molsPerSecondPerUnitMass: 0
+  # overrides this to 4h so raw meat still spoils faster than cooked.
+  - type: FoodSpoilage
+    spoilAfter: 28800
   # End Wayfarer
 
 - type: entity
@@ -66,11 +65,9 @@
     tags:
     - Raw
     - Meat
-  # Wayfarer: 4h shelf life for raw foods. molsPerSecondPerUnitMass 0
-  # keeps raw meat from giving off ammonia (that's for bodies, not food).
-  - type: Perishable
-    rotAfter: 14400
-    molsPerSecondPerUnitMass: 0
+  # Wayfarer: 4h shelf life for raw meat, so it spoils faster than cooked.
+  - type: FoodSpoilage
+    spoilAfter: 14400
   # End Wayfarer
   - type: RotInto
     entity: FoodMeatRotten

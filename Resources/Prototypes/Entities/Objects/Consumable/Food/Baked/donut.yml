@@ -24,11 +24,8 @@
   - type: StaticPrice # Frontier
     price: 14 # Frontier
   # Wayfarer: 24h shelf life for baked goods (FoodDonutFruitBase inherits)
-  - type: Perishable
-    rotAfter: 86400
-    molsPerSecondPerUnitMass: 0
-  - type: Temperature
-    currentTemperature: 290
+  - type: FoodSpoilage
+    spoilAfter: 86400
   # End Wayfarer
 
 - type: entity
