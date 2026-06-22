@@ -66,6 +66,8 @@
     - Raw
     - Meat
   # Wayfarer: 4h shelf life for raw meat, so it spoils faster than cooked.
+  # - type: Perishable
+  #   molsPerSecondPerUnitMass: 0
   - type: FoodSpoilage
     spoilAfter: 14400
   # End Wayfarer
