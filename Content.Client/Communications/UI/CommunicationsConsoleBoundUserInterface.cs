@@ -29,12 +29,12 @@ namespace Content.Client.Communications.UI
             _menu.OnEmergencyLevel += EmergencyShuttleButtonPressed;
         }
 
-        public void AlertLevelSelected(string level)
+        public void AlertLevelSelected(string level, string reason) // Wayfarer: string reason
         {
             if (_menu!.AlertLevelSelectable)
             {
                 _menu.CurrentLevel = level;
-                SendMessage(new CommunicationsConsoleSelectAlertLevelMessage(level));
+                SendMessage(new CommunicationsConsoleSelectAlertLevelMessage(level, reason)); // Wayfarer: reason
             }
         }
 

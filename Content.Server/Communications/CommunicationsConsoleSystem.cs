@@ -224,7 +224,8 @@ namespace Content.Server.Communications
             var stationUid = _stationSystem.GetOwningStation(uid);
             if (stationUid != null)
             {
-                _alertLevelSystem.SetLevel(stationUid.Value, message.Level, true, true);
+                var reason = SharedChatSystem.SanitizeAnnouncement(message.Reason, _cfg.GetCVar(CCVars.ChatMaxAnnouncementLength)); // Wayfarer
+                _alertLevelSystem.SetLevel(stationUid.Value, message.Level, true, true, reason: reason.Length > 0 ? reason : null); // Wayfarer: reason
             }
         }
 
