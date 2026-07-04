@@ -68,7 +68,12 @@ namespace Content.Client.Communications.UI
                 var metadata = AlertLevelButton.GetItemMetadata(args.Id);
                 if (metadata != null && metadata is string cast)
                 {
-                    OnAlertLevel?.Invoke(cast, Rope.Collapse(MessageInput.TextRope)); // Wayfarer: reason
+                    // Wayfarer
+                    /*
+                    OnAlertLevel?.Invoke(cast);
+                    */
+                    OnAlertLevel?.Invoke(cast, Rope.Collapse(MessageInput.TextRope));
+                    // End Wayfarer
                 }
             };
 

@@ -255,14 +255,14 @@ public sealed partial class AlertLevelSystem : EntitySystem // Wayfarer: Add Par
             // Wayfarer: sector-wide alert announcements
             var filter = Filter.Empty();
             filter.AddInMap(_ticker.DefaultMap, EntityManager);
-            
+
             string? senderName = null;
             if (Resolve(station, ref dataComponent, false))
             {
                 senderName = dataComponent.EntityName;
             }
-            
-            _chatSystem.DispatchFilteredAnnouncement(filter, announcementFull, station, 
+
+            _chatSystem.DispatchFilteredAnnouncement(filter, announcementFull, station,
                 sender: senderName, playSound: playDefault, colorOverride: detail.Color);
             // End Wayfarer
         }

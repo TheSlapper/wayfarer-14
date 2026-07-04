@@ -8,10 +8,11 @@ public sealed partial class AlertLevelSystem
 
     private string ApplyAlertReason(AlertLevelComponent component, string level, string? reason, string announcement)
     {
-        component.CurrentReason = reason;
-        component.ReminderDelay = level == component.AlertLevels?.DefaultLevel ? 0f : ReminderInterval;
+        var isDefault = level == component.AlertLevels!.DefaultLevel;
+        component.CurrentReason = isDefault ? null : reason;
+        component.ReminderDelay = isDefault ? 0f : ReminderInterval;
 
-        if (string.IsNullOrEmpty(reason))
+        if (isDefault || string.IsNullOrEmpty(reason))
             return announcement;
 
         return $"{announcement} {Loc.GetString("alert-level-reason", ("reason", reason))}";
@@ -39,8 +40,7 @@ public sealed partial class AlertLevelSystem
         if (string.IsNullOrEmpty(announcement) && Loc.TryGetString(detail.Announcement, out var locAnnouncement))
             announcement = locAnnouncement;
 
-        var filter = Filter.Empty();
-        filter.AddInMap(_ticker.DefaultMap, EntityManager);
+        var filter = Filter.BroadcastMap(_ticker.DefaultMap);
         _chatSystem.DispatchFilteredAnnouncement(filter,
             Loc.GetString("alert-level-reminder", ("name", name), ("announcement", announcement ?? string.Empty)),
             playSound: false,

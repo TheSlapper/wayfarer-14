@@ -224,8 +224,15 @@ namespace Content.Server.Communications
             var stationUid = _stationSystem.GetOwningStation(uid);
             if (stationUid != null)
             {
-                var reason = SharedChatSystem.SanitizeAnnouncement(message.Reason, _cfg.GetCVar(CCVars.ChatMaxAnnouncementLength)); // Wayfarer
-                _alertLevelSystem.SetLevel(stationUid.Value, message.Level, true, true, reason: reason.Length > 0 ? reason : null); // Wayfarer: reason
+                // Wayfarer
+                /*
+                _alertLevelSystem.SetLevel(stationUid.Value, message.Level, true, true);
+                */
+                var reason = SharedChatSystem.SanitizeAnnouncement(message.Reason, _cfg.GetCVar(CCVars.ChatMaxAnnouncementLength));
+                if (reason.Length > 0)
+                    _adminLogger.Add(LogType.Chat, LogImpact.Medium, $"{ToPrettyString(mob):player} selected alert level {message.Level} with reason: {reason}");
+                _alertLevelSystem.SetLevel(stationUid.Value, message.Level, true, true, reason: reason);
+                // End Wayfarer
             }
         }
 

@@ -34,7 +34,12 @@ namespace Content.Client.Communications.UI
             if (_menu!.AlertLevelSelectable)
             {
                 _menu.CurrentLevel = level;
-                SendMessage(new CommunicationsConsoleSelectAlertLevelMessage(level, reason)); // Wayfarer: reason
+                // Wayfarer
+                /*
+                SendMessage(new CommunicationsConsoleSelectAlertLevelMessage(level));
+                */
+                SendMessage(new CommunicationsConsoleSelectAlertLevelMessage(level, reason));
+                // End Wayfarer
             }
         }
 
