@@ -229,9 +229,9 @@ namespace Content.Server.Communications
                 _alertLevelSystem.SetLevel(stationUid.Value, message.Level, true, true);
                 */
                 var reason = SharedChatSystem.SanitizeAnnouncement(message.Reason, _cfg.GetCVar(CCVars.ChatMaxAnnouncementLength));
-                if (reason.Length > 0)
-                    _adminLogger.Add(LogType.Chat, LogImpact.Medium, $"{ToPrettyString(mob):player} selected alert level {message.Level} with reason: {reason}");
                 _alertLevelSystem.SetLevel(stationUid.Value, message.Level, true, true, reason: reason);
+                if (reason.Length > 0)
+                    _adminLogger.Add(LogType.Chat, LogImpact.Low, $"{ToPrettyString(mob):player} selected alert level {message.Level} with reason: {reason}");
                 // End Wayfarer
             }
         }

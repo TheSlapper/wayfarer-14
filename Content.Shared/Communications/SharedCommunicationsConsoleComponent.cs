@@ -37,7 +37,7 @@ namespace Content.Shared.Communications
         public readonly string Level;
         public readonly string Reason; // Wayfarer
 
-        public CommunicationsConsoleSelectAlertLevelMessage(string level, string reason) // Wayfarer: string reason
+        public CommunicationsConsoleSelectAlertLevelMessage(string level, string reason) // Wayfarer: reason
         {
             Level = level;
             Reason = reason; // Wayfarer

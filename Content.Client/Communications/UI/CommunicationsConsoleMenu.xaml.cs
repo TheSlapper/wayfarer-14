@@ -25,7 +25,7 @@ namespace Content.Client.Communications.UI
         public TimeSpan? CountdownEnd;
 
         public event Action? OnEmergencyLevel;
-        public event Action<string, string>? OnAlertLevel; // Wayfarer: string reason
+        public event Action<string, string>? OnAlertLevel; // Wayfarer: reason
         public event Action<string>? OnAnnounce;
         public event Action<string>? OnBroadcast;
 
