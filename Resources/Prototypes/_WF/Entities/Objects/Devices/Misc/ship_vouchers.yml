@@ -31,3 +31,6 @@
   - type: ShipyardVoucher
     destroyOnEmpty: true
     consoleType: Sr
+    shipWhitelist:
+    - MooringBuoy
+    - RaceBuoy
