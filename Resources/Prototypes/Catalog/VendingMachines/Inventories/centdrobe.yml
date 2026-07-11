@@ -72,6 +72,30 @@
     SLCentcommVibrobladeSheathFilled: 3
     GSNavyOfficerSabre: 3
     IMPClothingUniformJumpsuitCentcommIntern: 3
+    ClothingHeadCapCentcomNaval: 3
+    ClothingHeadHatBeretCentcomNaval: 3
+    ClothingHandsGlovesCentcomNaval: 3
+    ClothingOuterArmorCentcomCarapace: 3
+    ClothingHeadCapCentcomBlack: 3
+    ClothingNeckCloakCentcomBlack: 3
+    ClothingShoesCentcomBlack: 3
+    ClothingHeadHatBeretCentcomm: 3
+    ClothingNeckMantleCentcomm: 3
+    ClothingOuterWinterLongCentcom: 3
+    ClothingOuterWinterWindbreakerCentcom: 3
+    ClothingUniformJumpsuitCentcommResearch: 3
+    ClothingUniformJumpsuitCentcommMedical: 3
+    ClothingUniformJumpsuitCentcommTurtle: 3
+    ClothingCentcomBackpack: 3
+    ClothingHeadHatBeretHoSCentcom: 3
+    ClothingHeadHelmetCentcom: 3
+    ClothingNeckTieCentCom: 3
+    ClothingOuterArmorCentcom: 3
+    ClothingShoesBootsCentcom: 3
+    ClothingUniformJumpsuitCentcomMilitary: 3
+    ClothingUniformJumpsuitCentcomPrivateOfficer: 3
+    ClothingUniformJumpsuitseniorofficer: 3
+    ClothingUniformJumpsuitseniorofficeruniform: 3
     # End Wayfarer
   contrabandInventory:
     ToyFigurineCaptain: 1
