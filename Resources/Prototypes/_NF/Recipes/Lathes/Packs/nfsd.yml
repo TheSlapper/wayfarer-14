@@ -112,8 +112,10 @@
   #- NFWeaponRevolverArgenti # Wayfarer
   #- NFWeaponPistolMk58 # Wayfarer
   #- NFWeaponShotgunDoubleBarreled # Wayfarer
+  #- NFWeaponShotgunKammerer # Wayfarer
   #- NFWeaponRifleAssaultNovaliteC1 # Wayfarer
   #- NFWeaponRifleAssaultGestio # Wayfarer
+  #- NFWeaponEnergyRifleAssaultLaserRepeater # Wayfarer
   #- WeaponPistolPollock # Wayfarer
   - NFStunbaton
   - NFWeaponEnergyPistolDisabler

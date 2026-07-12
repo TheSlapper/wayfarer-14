@@ -18,14 +18,9 @@ guide-entry-wayfarer-rule-d1 = Rule D1: Safe Zones
 guide-entry-wayfarer-rule-d2 = Rule D2: PvP Zones
 
 # Shipyard entries
-guide-entry-cgpshipyard = CGP Shipyard
-guide-entry-civshipyard = Civilian Shipyard
-guide-entry-syndicateshipyard = Syndicate Shipyard
-guide-entry-expedshipyard = Expedition Shipyard
-guide-entry-medshipyard = Medical Shipyard
-guide-entry-outlawshipyard = Outlaw Shipyard
-guide-entry-scrapshipyard = Scrap Shipyard
-guide-entry-staffshipyard = Staff Shipyard
+guide-entry-shipyard-cgp = CGP Ships
+guide-entry-shipyard-coldlight = Coldlight Ships
+guide-entry-shipyard-outlaw = Outlaw Ships
 guide-entry-shipyard-mephit = Mephit
 guide-entry-shipyard-buckler = Buckler
 guide-entry-shipyard-dagger = Dagger

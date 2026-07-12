@@ -16,7 +16,4 @@
   id: WFBlueprintOutlaw
 
 - type: Tag
-  id: WhitelistWallet
-
-- type: Tag
   id: DataChit

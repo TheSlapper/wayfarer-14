@@ -384,7 +384,7 @@
     clothingPrototype: ClothingHeadHelmetHardsuitTacticalMaid
 
 - type: entity
-  parent: [BaseC3PirateContraband, ClothingOuterHardsuitBaseNF, ContrabandClothing] # Wayfarer: BaseC3PirateContraband<BaseBMContraband
+  parent: [BaseBMContraband, ClothingOuterHardsuitBaseNF, ContrabandClothing] # Wayfarer: BaseC3PirateContraband<BaseBMContraband
   id: ClothingOuterHardsuitPirateElite
   name: elite pirate hardsuit
   description: An ancient elite armored hardsuit, designed by an unknown bearded man and built like a brick house.
@@ -411,6 +411,35 @@
   - type: ClothingSpeedModifier
     walkModifier: 0.85
     sprintModifier: 0.75
+
+#Rogue Suit
+- type: entity
+  parent: [BaseBMContraband, ClothingOuterHardsuitBaseNF, ContrabandClothing] # Wayfarer: BaseC3PirateContraband<BaseBMContraband
+  id: ClothingOuterHardsuitRogue
+  name: rogue suit
+  description: For when you really need to put the dashing into dashing rogue.
+  components:
+  - type: Sprite
+    sprite: _NF/Clothing/OuterClothing/Hardsuits/rogue.rsi
+  - type: Clothing
+    sprite: _NF/Clothing/OuterClothing/Hardsuits/rogue.rsi
+  - type: ExplosionResistance
+    damageCoefficient: 0.5
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.7
+        Slash: 0.7
+        Piercing: 0.7
+        Heat: 0.7
+        Radiation: 0.55
+        Caustic: 0.75
+  - type: ClothingSpeedModifier
+    walkModifier: 0.95
+    sprintModifier: 0.9
+  - type: HeldSpeedModifier
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHardsuitRogue
 
 #Wizard Hardsuit
 - type: entity
