@@ -55,22 +55,21 @@
     DVClothingHeadHatBeretCentcomm: 3
     IMPClothingHeadHatCentcommIntern: 3
     DVClothingHandsGlovesCentComm: 3
-    DVClothingShoesBootsWinterCentCom: 3
+    ClothingShoesBootsWinterCentCom: 3
     SLClothingNeckCloakCentcomAdmiral: 3
     SLClothingNeckMantleERTLeader: 3
     DVClothingNeckCentcommCloakBoat: 3
-    DVClothingNeckMantleCentcom: 3
+    ClothingNeckMantleCentcom: 3
     SLClothingOuterCoatWardenCentcomm: 3
     SLClothingOuterVestWebEliteCentcomm: 3
-    DVClothingLongcoatCentCommArmored: 3
-    DVClothingOuterArmoredWinterCoatCentComm: 3
+    ClothingLongcoatCentCommArmored: 3
+    ClothingOuterArmoredWinterCoatCentComm: 3
     SLClothingBackpackSatchelCentcomm: 3
-    DVClothingBackpackCentcom: 3
-    DVClothingBackpackDuffelCentcom: 3
-    DVClothingBackpackSatchelCentcom: 3
+    ClothingBackpackCentcom: 3
+    ClothingBackpackDuffelCentcom: 3
+    ClothingBackpackSatchelCentcom: 3
     GSClothingBackpackMessengerCentcomm: 3
     SLCentcommVibrobladeSheathFilled: 3
-    GSNavyOfficerSabre: 3
     IMPClothingUniformJumpsuitCentcommIntern: 3
     ClothingHeadCapCentcomNaval: 3
     ClothingHeadHatBeretCentcomNaval: 3
