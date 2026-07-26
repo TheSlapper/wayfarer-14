@@ -1,8 +1,7 @@
 using Content.Server._NF.Roles.Components;
 using Content.Shared._WF.Outlaws.Components;
-using Content.Shared.Ghost;
+using Content.Shared.Cloning.Events;
 using Content.Shared.Mind;
-using Content.Shared.Mind.Components;
 using Content.Shared.Roles;
 
 namespace Content.Server._WF.Outlaws.Systems;
@@ -19,26 +18,17 @@ public sealed class OutlawMarkerSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<RoleAddedEvent>(OnRoleAdded);
-        SubscribeLocalEvent<MindComponent, MindGotAddedEvent>(OnMindGotAdded);
+        SubscribeLocalEvent<OutlawComponent, CloningEvent>(OnCloned);
     }
 
     private void OnRoleAdded(RoleAddedEvent args)
     {
-        if (args.Mind.OwnedEntity is { } body)
-            Apply(body, args.MindId);
-    }
-
-    private void OnMindGotAdded(EntityUid mindId, MindComponent comp, MindGotAddedEvent args)
-    {
-        Apply(args.Container, mindId);
-    }
-
-    private void Apply(EntityUid body, EntityUid mindId)
-    {
-        if (HasComp<GhostComponent>(body))
-            return;
-
-        if (_roles.MindHasRole<NFPirateRoleComponent>(mindId))
+        if (args.Mind.OwnedEntity is { } body && _roles.MindHasRole<NFPirateRoleComponent>(args.MindId))
             EnsureComp<OutlawComponent>(body);
+    }
+
+    private void OnCloned(Entity<OutlawComponent> ent, ref CloningEvent args)
+    {
+        EnsureComp<OutlawComponent>(args.CloneUid);
     }
 }
