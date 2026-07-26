@@ -60,6 +60,13 @@
       sprite: Objects/Weapons/Guns/Launchers/pirate_cannon.rsi
     - type: BallisticAmmoProvider
       proto: NFCannonBall
+    # Wayfarer
+    - type: EquipmentLock
+      locks: Fire
+      whitelist:
+        components:
+        - Outlaw
+    # Wayfarer End
 
 #region Frontier
 - type: entity
