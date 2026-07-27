@@ -41,6 +41,8 @@ public sealed class JugglingOverlay : Overlay
     {
         var handle = args.WorldHandle;
         var curTime = (float)_timing.CurTime.TotalSeconds;
+        var rotation = args.Viewport.Eye?.Rotation ?? Angle.Zero;
+        var rotationMatrix = Matrix3Helpers.CreateRotation(-rotation);
 
         var enumerator = _entities.EntityQueryEnumerator<JugglingActiveComponent, TransformComponent>();
         while (enumerator.MoveNext(out _, out var active, out var xform))
@@ -53,11 +55,14 @@ public sealed class JugglingOverlay : Overlay
             var elapsed = curTime - startTime;
             var n = active.JuggledItems.Count;
 
+            var worldMatrix = Matrix3Helpers.CreateTranslation(worldPos);
+            handle.SetTransform(Matrix3x2.Multiply(rotationMatrix, worldMatrix));
+
             for (var i = 0; i < n; i++)
             {
                 // Stagger items evenly through the cycle so they do not overlap.
                 var phase = i * (Cycle / n);
-                var itemPos = ComputeItemPos(worldPos, elapsed, phase, Cycle);
+                var itemPos = ComputeItemPos(elapsed, phase, Cycle);
 
                 if (!_entities.TryGetEntity(active.JuggledItems[i], out var itemEnt))
                     continue;
@@ -77,31 +82,34 @@ public sealed class JugglingOverlay : Overlay
                 handle.DrawTextureRect(texture, new Box2Rotated(box, spin, itemPos));
             }
         }
+
+        handle.SetTransform(Matrix3x2.Identity);
     }
 
     // Each item rises in a tall arc from one hand to the other, then makes a quick low pass back.
-    private static Vector2 ComputeItemPos(Vector2 center, float elapsed, float phase, float cycle)
+    // Positions are offsets from the player.
+    private static Vector2 ComputeItemPos(float elapsed, float phase, float cycle)
     {
         var tNorm = ((elapsed + phase) % cycle) / cycle;
         if (tNorm < 0f) tNorm += 1f;
 
-        var left  = center + new Vector2(-0.35f, 0f);
-        var right = center + new Vector2( 0.35f, 0f);
+        const float left = -0.35f;
+        const float right = 0.35f;
 
         float x, y;
         if (tNorm < 0.55f)
         {
             // Tall arc from right hand to left hand. Peak height 0.9 tiles.
             var u = tNorm / 0.55f;
-            x = MathHelper.Lerp(right.X, left.X, u);
-            y = center.Y + 0.9f * MathF.Sin(MathF.PI * u);
+            x = MathHelper.Lerp(right, left, u);
+            y = 0.9f * MathF.Sin(MathF.PI * u);
         }
         else
         {
             // Short low pass from left hand back to right hand. Peak height 0.18 tiles.
             var u = (tNorm - 0.55f) / 0.45f;
-            x = MathHelper.Lerp(left.X, right.X, u);
-            y = center.Y + 0.18f * MathF.Sin(MathF.PI * u);
+            x = MathHelper.Lerp(left, right, u);
+            y = 0.18f * MathF.Sin(MathF.PI * u);
         }
 
         return new Vector2(x, y);
