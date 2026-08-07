@@ -28,7 +28,7 @@ public sealed class WFWeatherExposureSystem : EntitySystem
         }
     }
 
-    // The reverse of what the server packs, so the two have to change together.
+    // The reverse of what the server sends, so the two have to change together.
     private static void Apply(WFExposureComponent comp, Dictionary<Vector2i, ulong> open,
         Dictionary<Vector2i, ulong> covered)
     {

@@ -7,7 +7,7 @@ using Robust.Shared.Timing;
 namespace Content.Shared._WF.Weather;
 
 /// <summary>
-/// For every tile of this grid, whether it can have weather and whether anything is above it.
+/// For every tile of this grid, whether it is open to the outside and whether it is rooved.
 /// </summary>
 [RegisterComponent, UnsavedComponent, NetworkedComponent]
 public sealed partial class WFExposureComponent : Component
@@ -81,7 +81,7 @@ public sealed partial class WFExposureComponent : Component
         if (!Chunks.TryGetValue(chunkIndex, out var chunk))
             return false;
 
-        // A tile can have nothing above it and still be walled in, so particulate weather needs both answers to be yes.
+        // A tile can be unrooved and still walled in, so particulate weather needs it open to the outside as well.
         var mask = shelter == WeatherShelter.Particulate
             ? chunk.OpenToOutside & chunk.OpenOverhead
             : chunk.OpenToOutside;
@@ -96,7 +96,7 @@ public sealed partial class WFExposureComponent : Component
     public bool SetOpenOverhead(Vector2i pos, GameTick tick) => Set(pos, tick, open: null, overhead: true);
 
     /// <summary>
-    /// Marks a tile as walled off, leaving whether it has a roof alone.
+    /// Marks a tile as walled off, leaving whether it is rooved alone.
     /// </summary>
     public bool Seal(Vector2i pos, GameTick tick) => Set(pos, tick, open: false, overhead: null);
 
@@ -120,7 +120,7 @@ public sealed partial class WFExposureComponent : Component
         if (updated.OpenToOutside == chunk.OpenToOutside && updated.OpenOverhead == chunk.OpenOverhead)
             return false;
 
-        // Whether anything is above a tile still matters while the tile cannot have weather, so that answer is kept on its own.
+        // Whether a tile is rooved is worth keeping even when it is not open to the outside.
         if (updated.OpenToOutside == 0 && updated.OpenOverhead == 0)
             Chunks.Remove(chunkIndex);
         else
@@ -164,10 +164,10 @@ public sealed partial class WFExposureComponent : Component
 
 public struct WFExposureChunk
 {
-    // Tiles with a path to open space that nothing blocks.
+    // Tiles open to the outside, with nothing blocking the way.
     public ulong OpenToOutside;
 
-    // Tiles with nothing above them.
+    // Tiles that are not rooved.
     public ulong OpenOverhead;
 }
 
@@ -192,7 +192,7 @@ public sealed class WFExposureState(Dictionary<Vector2i, ulong> open, Dictionary
 {
     public Dictionary<Vector2i, ulong> Open = open;
 
-    // Tiles with something above them are sent instead, because there are far fewer of those.
+    // Rooved tiles are sent instead, because there are far fewer of those.
     public Dictionary<Vector2i, ulong> Covered = covered;
 }
 

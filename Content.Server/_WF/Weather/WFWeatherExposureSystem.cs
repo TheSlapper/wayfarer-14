@@ -438,7 +438,7 @@ public sealed class WFWeatherExposureSystem : EntitySystem
         {
             comp.Chunks.TryGetValue(chunk, out var old);
 
-            // A roof cannot be seen from the tiles alone, so after the first pass the answer only changes for tiles that have just been closed off.
+            // A roof cannot be seen from the tiles alone, so a tile only counts as rooved once it has been walled in.
             var overhead = comp.Counted
                 ? old.OpenOverhead & ~(old.OpenToOutside & ~fresh.OpenToOutside)
                 : fresh.OpenToOutside;
