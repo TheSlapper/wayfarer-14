@@ -10,8 +10,8 @@ outlaw-objectives-completed-wrap = [font size=14][bold]Black Market Jobs[/bold][
                                    {$message}[/font]
 outlaw-objectives-activated = A new job is available.
 
-outlaw-objectives-critical-title = [bold]Put {$target} in critical condition.[/bold]
-outlaw-objectives-critical-description = Teach them a lesson.
+outlaw-objectives-kill-title = [bold]Kill {$target}.[/bold]
+outlaw-objectives-kill-description = Teach them a lesson.
 
 outlaw-objectives-round-removal-title = [bold]Kill {$target}.[/bold]
 outlaw-objectives-round-removal-description = Destroy their body to ensure they are not revived.

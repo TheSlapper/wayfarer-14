@@ -338,14 +338,13 @@ public sealed class OutlawObjectivePayoutSystem : EntitySystem
         if (args.NewMobState == MobState.Alive)
             comp.LastAttacker = null;
 
-        if (args.OldMobState == MobState.Alive
-            && args.NewMobState is MobState.Critical or MobState.Dead
+        if (args.NewMobState == MobState.Dead
             && (args.Origin ?? comp.LastAttacker ?? GetPredator(uid)) is { } outlaw
             && outlaw != uid
             && IsOutlaw(outlaw)
             && !IsSsd(uid))
         {
-            CompleteAll((uid, comp), OutlawObjectiveTrigger.Critical, outlaw);
+            CompleteAll((uid, comp), OutlawObjectiveTrigger.Killed, outlaw);
         }
 
         RefreshApp();

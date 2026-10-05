@@ -5,7 +5,7 @@ namespace Content.Shared._WF.OutlawObjectives;
 
 public enum OutlawObjectiveTrigger : byte
 {
-    Critical,
+    Killed,
     Gibbed,
     ItemSold,
     ShipSold,

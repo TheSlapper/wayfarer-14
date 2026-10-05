@@ -2,8 +2,8 @@
 # traits tab and doesn't contribute to trait limits. Put that trait's id in the objective's trait field.
 #
 # The current objective completion triggers are:
-#   Critical     Pays the outlaw responsible for the target reaching critical condition. Stops being
-#                listed once the target is dead.
+#   Killed       Pays the outlaw responsible for the target's death. Stops being listed while the
+#                target is dead.
 #   Gibbed       Pays the outlaw responsible for destroying the body.
 #   ItemSold     Pays when an outlaw sells the objective's item on a contraband pad.
 #   ShipSold     Pays when an outlaw sells the target's ship with a forged deed at a console listed in
@@ -17,9 +17,9 @@
   name: humanoid-profile-editor-outlaw-objectives-tab
 
 - type: trait
-  id: WFTraitOutlawCritical
+  id: WFTraitOutlawKill
   category: WFOutlawObjectives
-  name: outlaw-objectives-critical
+  name: outlaw-objectives-kill
   description: outlaw-objectives-note
   hidden: true
   conflicts:
@@ -32,7 +32,7 @@
   description: outlaw-objectives-note
   hidden: true
   conflicts:
-  - WFTraitOutlawCritical
+  - WFTraitOutlawKill
 
 - type: trait
   id: WFTraitOutlawTheft
@@ -47,6 +47,8 @@
   name: outlaw-objectives-ship-theft
   description: outlaw-objectives-note
   hidden: true
+  conflicts:
+  - WFTraitOutlawShipDamage
 
 - type: trait
   id: WFTraitOutlawShipDamage
@@ -54,15 +56,17 @@
   name: outlaw-objectives-ship-damage
   description: outlaw-objectives-note
   hidden: true
+  conflicts:
+  - WFTraitOutlawShipTheft
 
 - type: outlawObjective
-  id: WFOutlawObjectiveCritical
+  id: WFOutlawObjectiveKill
   rewardDC: 15
   rewardSpesos: 100000
-  trigger: Critical
-  trait: WFTraitOutlawCritical
-  title: outlaw-objectives-critical-title
-  description: outlaw-objectives-critical-description
+  trigger: Killed
+  trait: WFTraitOutlawKill
+  title: outlaw-objectives-kill-title
+  description: outlaw-objectives-kill-description
 
 - type: outlawObjective
   id: WFOutlawObjectiveRoundRemoval

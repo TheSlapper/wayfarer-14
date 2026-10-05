@@ -85,7 +85,7 @@ public sealed class OutlawObjectivesCartridgeSystem : EntitySystem
             {
                 var proto = _proto.Index(objective);
 
-                if (dead && proto.Trigger == OutlawObjectiveTrigger.Critical)
+                if (dead && proto.Trigger == OutlawObjectiveTrigger.Killed)
                     continue;
 
                 entries.Add(new OutlawObjectiveEntry(name, objective, ssd));
