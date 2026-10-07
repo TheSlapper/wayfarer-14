@@ -2,10 +2,10 @@
   id: NamesIPCFirst
   values:
     prefix: names-IPC-first-dataset-
-    count: 100
+    count: 99
 
 - type: localizedDataset
   id: NamesIPCLast
   values:
     prefix: names-IPC-last-dataset-
-    count: 1000
+    count: 999
