@@ -24,6 +24,7 @@ using Robust.Shared.Console;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using Content.Server.Station.Components;
 
 namespace Content.Server._WF.Administration.CentComSpawn;
 
@@ -78,7 +79,7 @@ public sealed class CentComSpawnEui : BaseEui
         mindSystem.SetUserId(mind, Player.UserId);
 
         var mob = _entityManager.System<StationSpawningSystem>()
-            .SpawnPlayerMob(_coordinates, Job, profile, _station, session: Player);
+            .SpawnPlayerMob(_coordinates, Job, profile, _entityManager.HasComponent<StationJobsComponent>(_station) ? _station : null, session: Player);
 
         mindSystem.TransferTo(mind, mob, mind: mind.Comp);
         _entityManager.System<SharedRoleSystem>().MindAddJobRole(mind, jobPrototype: Job);
